@@ -491,7 +491,7 @@ window.openContractWithGoogle=async function(){if(cloudUser&&allowedUser(cloudUs
  
 if(signinButton)signinButton.addEventListener("click",performGoogleSignIn);
 if(signoutButton)signoutButton.addEventListener("click",()=>cloudAuth&&cloudAuth.signOut());
-if(cloudAuth){cloudAuth.getRedirectResult().then(result=>{if(result&&result.user&&allowedUser(result.user)){let shouldOpen=false;try{shouldOpen=sessionStorage.getItem("openContractAfterGoogle")==="1";sessionStorage.removeItem("openContractAfterGoogle")}catch(e){}if(shouldOpen){go("home");startContractMusic()}}}).catch(e=>console.error(e));cloudAuth.onAuthStateChanged(user=>startCloudSync(user))}else setCloudStatus("Firebase SDK ကို မတင်နိုင်ပါ။ အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပါ။");
+if(cloudAuth){try{sessionStorage.removeItem("openContractAfterGoogle")}catch(e){}cloudAuth.onAuthStateChanged(user=>startCloudSync(user))}else setCloudStatus("Firebase SDK ကို မတင်နိုင်ပါ။ အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပါ။");
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',openingCelebration,{once:true});else openingCelebration();
 })();
 </script>
