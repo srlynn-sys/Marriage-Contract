@@ -31,7 +31,7 @@
 #cover.page-view.active{display:grid!important}
 #home.page-view.active{display:grid!important}
 @media(max-height:700px){.cover-frame{min-height:calc(100svh - 32px);padding-top:25px;padding-bottom:80px}.monogram-stack{margin:12px 0}.monogram-letter{font-size:clamp(58px,13vh,88px)}.cover-seal{bottom:20px}}
-@media(prefers-reduced-motion:reduce){.page-view.active{animation:none!important}.sound-burst,.sound-burst span{animation:none!important}}
+@media(prefers-reduced-motion:reduce){.page-view.active{animation:none!important}.sound-burst,.sound-burst span,.tap-heart{animation:none!important}}
 /* Independent page options: show one section at a time instead of one long scrolling page */
 .page-view{display:none!important}
 .page-view.active{display:block!important;animation:rise .32s ease both}
@@ -45,7 +45,7 @@
 .option-arrow{margin-top:auto;font-size:13px;color:#17345b}
 .nav button.current{background:#fffaf0;color:#17345b;border-color:#fffaf0;font-weight:bold}
 @media(max-width:650px){.option-grid{grid-template-columns:1fr}.option-card{min-height:125px}.hero{min-height:auto}}
-/* Sound-wave burst on every tap/click */
+/* Heart confetti on every page tap, plus sound waves on controls */
 .sound-layer{position:fixed;inset:0;pointer-events:none;z-index:100;overflow:hidden}
 .sound-burst{position:absolute;width:44px;height:44px;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;gap:3px;filter:drop-shadow(0 2px 2px #17345b20)}
 .sound-burst:before,.sound-burst:after{content:"";position:absolute;border:1px solid #9b8050;border-radius:50%;animation:soundRing .75s ease-out forwards}
@@ -54,6 +54,8 @@
 .sound-burst span:nth-child(1),.sound-burst span:nth-child(5){height:8px}
 .sound-burst span:nth-child(2),.sound-burst span:nth-child(4){height:16px;animation-delay:.08s}
 .sound-burst span:nth-child(3){height:24px;background:#9b8050;animation-delay:.14s}
+.tap-heart{position:absolute;left:0;top:0;font-size:22px;line-height:1;transform:translate(-50%,-50%);animation:heartFloat 1.15s ease-out forwards;filter:drop-shadow(0 2px 3px #9b805055);will-change:transform,opacity}
+@keyframes heartFloat{0%{opacity:0;transform:translate(-50%,-30%) scale(.35) rotate(-12deg)}15%{opacity:1;transform:translate(calc(-50% + var(--dx1)), -50%) scale(1.12) rotate(8deg)}100%{opacity:0;transform:translate(calc(-50% + var(--dx2)), calc(-50% - 95px)) scale(.72) rotate(var(--rot))}}
 @keyframes soundWave{from{transform:scaleY(.35);opacity:.65}to{transform:scaleY(1.15);opacity:1}}
 @keyframes soundRing{from{width:8px;height:8px;opacity:.8}to{width:54px;height:54px;opacity:0}}
 /* Formal navy-blue and ivory contract treatment */
@@ -263,11 +265,25 @@ function soundAnimation(x,y){
  for(let i=0;i<5;i++)burst.appendChild(document.createElement('span'));
  layer.appendChild(burst);setTimeout(()=>burst.remove(),950);
 }
+function heartAnimation(x,y){
+ const layer=document.getElementById('soundLayer');if(!layer)return;
+ const hearts=['💗','💕','💖','🤍','💙'];
+ for(let i=0;i<5;i++){
+  const heart=document.createElement('span');heart.className='tap-heart';
+  heart.textContent=hearts[Math.floor(Math.random()*hearts.length)];
+  heart.style.left=x+'px';heart.style.top=y+'px';
+  heart.style.setProperty('--dx1',((Math.random()-.5)*42)+'px');
+  heart.style.setProperty('--dx2',((Math.random()-.5)*110)+'px');
+  heart.style.setProperty('--rot',((Math.random()-.5)*70)+'deg');
+  heart.style.animationDelay=(i*.045)+'s';
+  layer.appendChild(heart);setTimeout(()=>heart.remove(),1450);
+ }
+}
 document.addEventListener('click',e=>{
+ const x=e.clientX||window.innerWidth/2,y=e.clientY||window.innerHeight/2;
+ heartAnimation(x,y);
  const target=e.target.closest('button,a,[role="button"]');
- if(!target)return;
- soundAnimation(e.clientX||window.innerWidth/2,e.clientY||window.innerHeight/2);
- clickSound();
+ if(target){soundAnimation(x,y);clickSound();}
 },{passive:true});
 let activePartner=null, drawing=false, hasInk=false, ctx=null, canvas=null;
 const names={min:'Mg Min Khant',linn:'Mg Linn Thit Aung'};
