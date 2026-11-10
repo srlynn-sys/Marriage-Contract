@@ -128,7 +128,7 @@ body{background:#f3eedf;color:#172d4b}
     <p class="cover-names">Mg Linn Thit Aung <span>နှင့်</span> Mg Min Khant</p>
     <p class="cover-caption">ချစ်ခြင်း · သစ္စာ · အပြန်အလှန်လေးစားမှု</p>
     <div style="display:flex;flex-direction:column;gap:10px;align-items:center;margin-top:8px;position:relative;z-index:1">
-      <button class="btn primary cover-enter" onclick="go('home')">စာချုပ်ကို ဖွင့်ရန် <span aria-hidden="true">→</span></button>
+      <button class="btn primary cover-enter" onclick="openContractWithGoogle()">စာချုပ်ကို ဖွင့်ရန် <span aria-hidden="true">→</span></button>
       <button class="btn" id="cloud-signin-cover" type="button">🔐 Google နဲ့ ဝင်ရန်</button>
       <p class="small" id="cloud-auth-status-cover" role="status" style="max-width:300px;text-align:center;margin:0">လက်မှတ်များကို စက်များအကြား Sync လုပ်ရန် Google ဖြင့် ဝင်ပါ။</p>
     </div>
@@ -383,7 +383,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSign()});
 window.addEventListener('resize',()=>{if(document.getElementById('signModal').classList.contains('open')){notify('မျက်နှာပြင်အရွယ်အစား မပြောင်းမီ လက်ရှိလက်မှတ်ကို အပြီးသတ်ရေးဆွဲပါ သို့မဟုတ် သိမ်းဆည်းပါ။')}})
 render();
 const signinButton=document.getElementById("cloud-signin"),signinCoverButton=document.getElementById("cloud-signin-cover"),signoutButton=document.getElementById("cloud-signout");
-async function performGoogleSignIn(){if(!cloudAuth){setCloudStatus("Firebase စတင်မရပါ။ စာမျက်နှာကို ပြန်ဖွင့်ပါ။");return}try{const provider=new firebase.auth.GoogleAuthProvider();provider.setCustomParameters({prompt:"select_account"});const result=await cloudAuth.signInWithPopup(provider);if(!allowedUser(result.user)){await cloudAuth.signOut();notify("ဤ Gmail ကို အသုံးပြုခွင့်မရှိပါ။")}}catch(e){console.error(e);if(e.code==="auth/popup-blocked"||e.code==="auth/popup-closed-by-user"){try{await cloudAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}catch(err){setCloudStatus("Google Sign-in မအောင်မြင်ပါ။ ထပ်မံကြိုးစားပါ။")}}else if(e.code==="permission-denied"){setCloudStatus("Firestore Security Rules ကို စစ်ဆေးပါ။")}else setCloudStatus("Google Sign-in မအောင်မြင်ပါ: "+(e.code||"unknown error"))}}
+async function performGoogleSignIn(){if(!cloudAuth){setCloudStatus("Firebase စတင်မရပါ။ စာမျက်နှာကို ပြန်ဖွင့်ပါ။");return false}try{const provider=new firebase.auth.GoogleAuthProvider();provider.setCustomParameters({prompt:"select_account"});const result=await cloudAuth.signInWithPopup(provider);if(!allowedUser(result.user)){await cloudAuth.signOut();notify("ဤ Gmail ကို အသုံးပြုခွင့်မရှိပါ။");return false}return true}catch(e){console.error(e);if(e.code==="auth/popup-blocked"||e.code==="auth/popup-closed-by-user"){try{await cloudAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());return false}catch(err){setCloudStatus("Google Sign-in မအောင်မြင်ပါ။ ထပ်မံကြိုးစားပါ။");return false}}else if(e.code==="permission-denied"){setCloudStatus("Firestore Security Rules ကို စစ်ဆေးပါ။");return false}else{setCloudStatus("Google Sign-in မအောင်မြင်ပါ: "+(e.code||"unknown error"));return false}}}
+window.openContractWithGoogle=async function(){if(cloudUser&&allowedUser(cloudUser)){go("home");return}const signedIn=await performGoogleSignIn();if(signedIn)go("home")};
 if(signinButton)signinButton.addEventListener("click",performGoogleSignIn);
 if(signinCoverButton)signinCoverButton.addEventListener("click",performGoogleSignIn);
 if(signoutButton)signoutButton.addEventListener("click",()=>cloudAuth&&cloudAuth.signOut());
