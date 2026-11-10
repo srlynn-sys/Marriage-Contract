@@ -26,11 +26,9 @@
 .cover-names span{color:#9b8050;padding:0 5px}
 .cover-caption{font-size:12px;letter-spacing:.08em;color:#58657a;margin:8px 0 24px}
 .cover-enter{min-width:190px;justify-content:center;display:flex;gap:14px;align-items:center}
-.cover-seal{position:absolute;bottom:clamp(26px,5vh,48px);border:3px double #17345b;outline:1px solid #9b8050;outline-offset:4px;border-radius:50%;width:54px;height:54px;display:grid;place-items:center;font-size:13px;background:#f3eedf;color:#17345b}
-.cover-seal span{color:#9b8050;font-size:10px}
 #cover.page-view.active{display:grid!important}
 #home.page-view.active{display:grid!important}
-@media(max-height:700px){.cover-frame{min-height:calc(100svh - 32px);padding-top:25px;padding-bottom:80px}.monogram-stack{margin:12px 0}.monogram-letter{font-size:clamp(58px,13vh,88px)}.cover-seal{bottom:20px}}
+@media(max-height:700px){.cover-frame{min-height:calc(100svh - 32px);padding-top:25px;padding-bottom:45px}.monogram-stack{margin:12px 0}.monogram-letter{font-size:clamp(58px,13vh,88px)}}
 @media(prefers-reduced-motion:reduce){.page-view.active{animation:none!important}.sound-burst,.sound-burst span,.tap-heart{animation:none!important}}
 /* Independent page options: show one section at a time instead of one long scrolling page */
 .page-view{display:none!important}
@@ -104,6 +102,20 @@ body{background:#f3eedf;color:#172d4b}
 .hero-card:before{content:"";position:absolute;inset:7px;border:1px solid #c5b58e;pointer-events:none}
 @media print{body{background:#fffaf0!important;color:#172d4b!important}.topbar{background:#142b4d!important}.brand,.nav button{color:#fffaf0!important}.hero-card{border:1px solid #17345b!important;box-shadow:none!important}.panel:before{display:none}.panel,.sign-card,.nameplate,.record-item,.legal-note{background:#fffaf0!important;color:#172d4b!important}.clause p,.promise,.intro,.section-head p,.small,.legal-note{color:#333!important}.seal{background:#17345b!important;color:#fffaf0!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}.stamp{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 /* Elegant A4 contract export */
+/* Signature-style L & M contract monogram and repeating star watermark */
+.contract-document{isolation:isolate}
+.contract-watermark{position:absolute;inset:8mm;z-index:0;pointer-events:none;opacity:.105;background-image:radial-gradient(circle at center,transparent 0 17px,#9b8050 17.5px 18px,transparent 18.5px),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='112' viewBox='0 0 170 112'%3E%3Ctext x='85' y='42' text-anchor='middle' font-family='Georgia,serif' font-size='29' font-style='italic' fill='%2317345b' letter-spacing='2'%3EL %26amp%3B M%3C/text%3E%3Cpath d='M85 52 l3 6 7 1 -5 5 1 7 -6 -3 -6 3 1 -7 -5 -5 7 -1z' fill='%239b8050'/%3E%3C/svg%3E");background-size:170px 112px;background-repeat:repeat;}
+.contract-document>*:not(.contract-watermark):not(.contract-inner-border){position:relative;z-index:1}
+.contract-monogram{width:29mm;height:29mm;border:0;outline:0;border-radius:0;margin:2mm auto 2mm;display:flex;flex-direction:column;gap:0;line-height:.78;background:transparent;color:#17345b;text-shadow:1px 1px 0 #d8c9a5}
+.contract-monogram .monogram-top,.contract-monogram .monogram-bottom{font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:normal;letter-spacing:.04em;color:#17345b}
+.contract-monogram .monogram-amp{font-size:11px;font-style:italic;color:#9b8050;margin:2px 0 3px}
+.option-grid{grid-template-columns:1fr;max-width:520px}
+.option-card{width:100%}
+.option-card.step-hidden{display:none!important}
+.option-step-controls{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:16px}
+.option-step-count{font:12px Arial,sans-serif;color:var(--muted)}
+@media print{.contract-watermark{opacity:.13!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}.contract-monogram{border:0!important;outline:0!important;background:transparent!important}}
+
 .a4-sheet{position:relative;width:210mm;min-height:297mm;margin:0 auto;background:#fffdf7;color:#172d4b;padding:17mm 16mm 14mm;box-sizing:border-box;border:1px solid #b6a987;box-shadow:0 16px 42px #172d4b20;font-family:Georgia,'Times New Roman',serif;overflow:hidden}
 .contract-inner-border{position:absolute;inset:5mm;border:3px double #17345b;pointer-events:none}
 .contract-kicker{text-align:center;font:10px Arial,sans-serif;letter-spacing:.28em;color:#9b8050;margin-top:2mm}
@@ -165,10 +177,10 @@ body{background:#f3eedf;color:#172d4b}
     <p class="cover-names">Mg Linn Thit Aung <span>နှင့်</span> Mg Min Khant</p>
     <p class="cover-caption">ချစ်ခြင်း · သစ္စာ · အပြန်အလှန်လေးစားမှု</p>
     <div style="display:flex;flex-direction:column;gap:10px;align-items:center;margin-top:8px;position:relative;z-index:1">
-      <button class="btn primary cover-enter" onclick="openContractWithGoogle()">စာချုပ်ကို ဖွင့်ရန် <span aria-hidden="true">→</span></button>
+      <button class="btn primary cover-enter" onclick="openContractWithGoogle()">စတင်ဖတ်ရှုရန် <span aria-hidden="true">→</span></button>
       <p class="small" id="cloud-auth-status-cover" role="status" style="max-width:300px;text-align:center;margin:0">လက်မှတ်များကို စက်များအကြား Sync လုပ်ရန် Google ဖြင့် ဝင်ပါ။</p>
     </div>
-    <div class="cover-seal" aria-hidden="true">L <span>♥</span> M</div>
+    
   </div>
 </section>
 <section class="hero wrap page-view" id="home">
@@ -189,6 +201,7 @@ body{background:#f3eedf;color:#172d4b}
       <button class="option-card" onclick="go('record')"><span class="option-number">၀၄</span><strong>စာချုပ်မှတ်တမ်း</strong><small>သိမ်းဆည်းထားသော လက်မှတ်များနှင့် ပုံနှိပ်နိုင်သည့် မှတ်တမ်း</small><span class="option-arrow">ဖွင့်ရန် →</span></button>
       <button class="option-card" onclick="go('contract-page')"><span class="option-number">၀၅</span><strong>စာချုပ်</strong><small>နှစ်ဦး၏ သိမ်းဆည်းထားသော လက်မှတ်များပါဝင်သည့် A4 စာချုပ်ကို PDF ထုတ်ရန်</small><span class="option-arrow">စာချုပ်ပြုလုပ်ရန် →</span></button>
     </div>
+    <div class="option-step-controls"><button class="btn" id="option-step-prev" type="button" onclick="stepOptions(-1)" disabled>← ယခင်</button><span class="option-step-count" id="option-step-count">အဆင့် ၁ / ၅</span><button class="btn primary" id="option-step-next" type="button" onclick="stepOptions(1)">နောက်တစ်ဆင့် →</button></div>
     <p class="small" style="margin-top:20px">ချစ်ခြင်းဖြင့် ဖန်တီးထားသော ကိုယ်ပိုင်အမှတ်တရ</p>
   </div>
 </section>
@@ -268,9 +281,9 @@ body{background:#f3eedf;color:#172d4b}
   <div class="section-head no-print"><div class="eyebrow">A4 · PRINT READY</div><h2>ကိုယ်ပိုင်ကတိကဝတ်စာချုပ်</h2><p>လက်မှတ်များစာမျက်နှာတွင် သိမ်းဆည်းထားသော လက်မှတ်များကို အောက်ပါစာချုပ်ထဲသို့ အလိုအလျောက် ထည့်သွင်းပေးပါမည်။</p></div>
   <div class="no-print" style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 20px"><button class="btn primary" onclick="printContract()">စာချုပ်ကို PDF ထုတ်ရန်</button><button class="btn" onclick="go('signatures')">လက်မှတ်များ ပြင်ဆင်ရန်</button></div>
   <article class="a4-sheet" id="contract-document">
-    <div class="contract-inner-border"></div>
+    <div class="contract-watermark" aria-hidden="true"></div><div class="contract-inner-border"></div>
     <div class="contract-kicker">A PERSONAL COVENANT</div>
-    <div class="contract-emblem">L <span>♥</span> M</div>
+    <div class="contract-emblem contract-monogram" aria-label="L and M monogram"><span class="monogram-top">L</span><span class="monogram-amp">&amp;</span><span class="monogram-bottom">M</span></div>
     <h1>ကိုယ်ပိုင်ကတိကဝတ်စာချုပ်</h1>
     <p class="contract-subtitle">ချစ်ခြင်း · သစ္စာ · အပြန်အလှန်လေးစားမှု</p>
     <div class="contract-rule"></div>
@@ -286,7 +299,7 @@ body{background:#f3eedf;color:#172d4b}
       <div class="contract-signature-block"><div class="contract-signature" id="contract-sign-min">လက်မှတ် မထည့်ရသေးပါ</div><div class="contract-sign-line"></div><strong>Mg Min Khant</strong><small>ပထမစာချုပ်ဝင်</small></div>
       <div class="contract-signature-block"><div class="contract-signature" id="contract-sign-linn">လက်မှတ် မထည့်ရသေးပါ</div><div class="contract-sign-line"></div><strong>Mg Linn Thit Aung</strong><small>ဒုတိယစာချုပ်ဝင်</small></div>
     </div>
-    <div class="contract-date-row"><span>စာချုပ်ပြုလုပ်သည့်နေ့ — __________________</span><span>စာချုပ်အမှတ် MC-2026-01</span></div>
+    <div class="contract-date-row"><span>စာချုပ်ပြုလုပ်သည့်နေ့ — 18 November 2026</span><span>စာချုပ်အမှတ် MC-2026-01</span></div>
     <div class="contract-footer">ချစ်ခြင်းဖြင့် ရေးထိုးထားသော ကတိတစ်ခု · L ♥ M</div>
   </article>
   <p class="small no-print" style="text-align:center;margin-top:14px">PDF ထုတ်ရန် “စာချုပ်ကို PDF ထုတ်ရန်” ကိုနှိပ်ပြီး Print menu တွင် Save as PDF ကိုရွေးပါ။ A4 စာရွက်အရွယ်အစားကို အသုံးပြုပါ။</p>
@@ -438,6 +451,20 @@ function render(){
  document.getElementById('record-status').textContent=both?'နှစ်ဦးစလုံး၏ လက်မှတ်ကို ဤဘရောက်ဇာတွင် သိမ်းဆည်းပြီး':'လက်မှတ်တစ်ဦး သို့မဟုတ် နှစ်ဦးစလုံး၏ လက်မှတ်ကို စောင့်ဆိုင်းနေသည်';
  document.getElementById('record-date').textContent=d.savedAt?new Date(d.savedAt).toLocaleString():'မှတ်တမ်းမတင်ရသေးပါ';
 }
+let currentOptionStep=0;
+window.stepOptions=function(direction){
+ const cards=[...document.querySelectorAll('#home .option-card')];
+ if(!cards.length)return;
+ currentOptionStep=Math.max(0,Math.min(cards.length-1,currentOptionStep+direction));
+ cards.forEach((card,index)=>card.classList.toggle('step-hidden',index!==currentOptionStep));
+ const count=document.getElementById('option-step-count');
+ const prev=document.getElementById('option-step-prev');
+ const next=document.getElementById('option-step-next');
+ if(count)count.textContent='အဆင့် '+(currentOptionStep+1)+' / '+cards.length;
+ if(prev)prev.disabled=currentOptionStep===0;
+ if(next)next.textContent=currentOptionStep===cards.length-1?'ပြီးပါပြီ ✓':'နောက်တစ်ဆင့် →';
+};
+document.addEventListener('DOMContentLoaded',()=>window.stepOptions(0));
 window.printContract=function(){
  const data=getData();
  putSignature('contract-sign-min',data.min);putSignature('contract-sign-linn',data.linn);
