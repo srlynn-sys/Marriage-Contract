@@ -10,6 +10,28 @@
 :root{--bg:#f3eedf;--panel:#fffaf0;--panel2:#e8dfca;--gold:#17345b;--pink:#9b8050;--text:#172d4b;--muted:#58657a;--line:#b6a987;--green:#2f684b}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;line-height:1.65;min-height:100vh}button,input{font:inherit}button{cursor:pointer}.stars{position:fixed;inset:0;pointer-events:none;opacity:.25;background-image:radial-gradient(#fff 1px,transparent 1px),radial-gradient(#f3d49a 1px,transparent 1px);background-size:83px 83px,131px 131px;background-position:0 0,45px 60px;z-index:-1}.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px max(4vw,16px);background:#100a1bdc;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff18}.brand{font-size:14px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}.nav{display:flex;gap:7px;flex-wrap:wrap}.nav button,.btn{border:1px solid var(--line);color:var(--text);background:#ffffff08;border-radius:999px;padding:9px 14px;transition:.25s}.nav button:hover,.btn:hover{transform:translateY(-2px);border-color:var(--gold);background:#f3d49a12}.btn.primary{background:linear-gradient(120deg,#e8b6cb,#f3d49a);color:#251127;border:0;font-weight:bold}.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}.wrap{width:min(960px,92vw);margin:0 auto}.hero{min-height:82vh;display:grid;place-items:center;text-align:center;padding:70px 0 55px;position:relative}.hero-card{max-width:760px;animation:rise 1s ease both}.eyebrow{color:var(--gold);letter-spacing:.24em;text-transform:uppercase;font-size:12px}.hero h1{font-size:clamp(38px,8vw,76px);line-height:1.04;font-weight:normal;margin:22px 0}.hero h1 span{display:block;color:var(--pink);font-style:italic}.heart{font-size:30px;color:#ff9dbd;animation:pulse 2s infinite;display:inline-block}.intro{max-width:600px;margin:0 auto 28px;color:var(--muted);font-size:17px}.names{display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;margin:28px 0}.nameplate{border:1px solid #f3d49a55;padding:18px 25px;border-radius:18px;background:#ffffff08;min-width:210px}.nameplate strong{display:block;font-size:20px;color:var(--gold)}.nameplate small{color:var(--muted)}.section{padding:58px 0;scroll-margin-top:90px}.section-head{text-align:center;margin-bottom:30px}.section-head h2{font-weight:normal;font-size:clamp(28px,5vw,42px);margin:8px 0;color:var(--gold)}.section-head p{color:var(--muted);margin:0 auto;max-width:650px}.panel{background:linear-gradient(145deg,#241632eF,#160e22f2);border:1px solid #f3d49a36;border-radius:24px;padding:clamp(20px,4vw,38px);box-shadow:0 22px 70px #0003}.sign-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.sign-card{border:1px solid var(--line);border-radius:18px;padding:22px;background:#ffffff05}.sign-card h3{margin:0;color:var(--gold);font-weight:normal;font-size:22px}.sign-card p{color:var(--muted);font-size:14px}.saved-sign{height:90px;display:grid;place-items:center;border-bottom:1px dashed #a88cba;margin:8px 0 16px;color:#a88cba;font-style:italic}.saved-sign img{max-width:100%;height:85px;object-fit:contain;filter:brightness(1.15)}.status{font-size:12px;color:var(--muted);margin:10px 0}.status.done{color:var(--green)}.promise{border-left:2px solid var(--pink);padding:5px 0 5px 22px;margin:24px 0;color:#f6eaf5}.promise p{margin:0 0 12px}.promise p:last-child{margin:0}.page-label{display:flex;align-items:center;gap:10px;color:var(--pink);font-size:12px;letter-spacing:.15em;text-transform:uppercase}.page-label:after{content:"";height:1px;flex:1;background:var(--line)}.clause{padding:17px 0;border-bottom:1px solid #ffffff14}.clause:last-child{border-bottom:0}.clause h3{color:var(--gold);font-weight:normal;margin:0 0 5px}.clause p{margin:0;color:#e5d8e8}.legal-note{font-family:Arial,sans-serif;font-size:13px;color:var(--muted);background:#0c0813aa;border:1px solid #ffffff18;border-radius:14px;padding:16px;margin-top:22px}.seal{width:94px;height:94px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:20px auto;color:var(--gold);font-size:28px;box-shadow:0 0 0 7px #f3d49a0b,0 0 40px #f3d49a15}.record{display:none}.record.show{display:block;animation:rise .5s ease}.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.record-item{padding:15px;border-radius:14px;background:#ffffff06;border:1px solid #ffffff17}.record-item span{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.1em}.record-item strong{display:block;margin-top:5px;overflow-wrap:anywhere}.footer{text-align:center;padding:45px 15px 65px;color:var(--muted);font-size:13px}.footer .heart{font-size:18px}.modal{position:fixed;inset:0;z-index:30;background:#07040de8;backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px}.modal.open{display:flex}.modal-card{width:min(650px,100%);background:#1b1129;border:1px solid #f3d49a66;border-radius:22px;padding:22px;box-shadow:0 25px 100px #0009;animation:rise .25s ease}.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.modal-head h3{font-weight:normal;color:var(--gold);margin:0}.xbtn{border:0;background:none;color:white;font-size:28px}.canvas-wrap{margin:16px 0;border:1px dashed #9b7ca8;border-radius:12px;overflow:hidden;background:#fff;touch-action:none}.canvas-wrap canvas{display:block;width:100%;height:210px;touch-action:none;cursor:crosshair}.modal-help{font:13px Arial,sans-serif;color:var(--muted)}.modal-actions{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#f3d49a;color:#251127;border-radius:999px;padding:10px 18px;z-index:40;transition:.25s;font:14px Arial,sans-serif}.toast.show{opacity:1;transform:translate(-50%,0)}.small{font:12px Arial,sans-serif;color:var(--muted)}.page-break{border:0;border-top:1px solid #ffffff20;margin:28px 0}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}@media(max-width:650px){.sign-grid,.record-grid{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{width:100%}.nav button{font-size:12px;padding:7px 10px}.hero{min-height:75vh;padding-top:45px}.nameplate{min-width:min(250px,100%)}.section{padding:42px 0}.panel{border-radius:18px}}@media print{body{background:white!important;color:#222!important}.stars,.topbar,.hero .btn,.nav,.no-print,.footer,.modal,.toast{display:none!important}.hero{min-height:auto;padding:20px}.hero h1,.hero h1 span,.section-head h2,.clause h3,.sign-card h3,.eyebrow,.nameplate strong{color:#542444!important}.intro,.section-head p,.clause p,.sign-card p,.legal-note,.small{color:#333!important}.section{padding:20px 0;break-inside:avoid}.panel,.sign-card,.nameplate{background:white!important;border:1px solid #b99aa9!important;box-shadow:none!important}.saved-sign{border-color:#555}.saved-sign img{filter:none}.legal-note{border-color:#bbb;background:white!important}.page-label{color:#542444}.clause{border-color:#ddd}.record{display:block!important}.hero-card{animation:none}.heart{color:#a44}}
 
+/* Standalone cover page with L above M */
+.cover-page{min-height:100svh;padding:22px;display:grid;place-items:center;background:radial-gradient(ellipse at center,#fffaf0 0%,#f3eedf 68%,#e8dfca 100%);color:#17345b}
+.cover-frame{width:min(720px,100%);min-height:min(880px,calc(100svh - 44px));padding:clamp(24px,6vw,64px) 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;border:1px solid #17345b;outline:1px solid #b6a987;outline-offset:-9px;background:#fffaf0;box-shadow:0 18px 55px #17345b14;overflow:hidden}
+.cover-frame:before,.cover-frame:after{content:"✦";position:absolute;color:#b6a987;font-size:25px}
+.cover-frame:before{top:23px;left:25px}.cover-frame:after{bottom:23px;right:25px}
+.cover-kicker{font:11px Arial,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#9b8050}
+.monogram-stack{display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:.92;margin:clamp(18px,4vh,38px) 0}
+.monogram-letter{font-size:clamp(78px,17vw,132px);font-weight:normal;letter-spacing:.04em;color:#17345b;text-shadow:2px 2px 0 #d8c9a5}
+.monogram-amp{font-size:clamp(22px,5vw,34px);font-style:italic;color:#9b8050;margin:5px 0 8px}
+.cover-rule{height:1px;width:min(260px,65%);background:linear-gradient(90deg,transparent,#b6a987,transparent);margin:4px 0 22px}
+.cover-frame h1{font-size:clamp(27px,6vw,44px);font-weight:normal;line-height:1.25;margin:0;color:#17345b}
+.cover-frame h1 em{display:block;font-style:normal;color:#9b8050;margin-top:5px}
+.cover-names{font-size:clamp(14px,3vw,18px);margin:18px 0 0;color:#17345b}
+.cover-names span{color:#9b8050;padding:0 5px}
+.cover-caption{font-size:12px;letter-spacing:.08em;color:#58657a;margin:8px 0 24px}
+.cover-enter{min-width:190px;justify-content:center;display:flex;gap:14px;align-items:center}
+.cover-seal{position:absolute;bottom:clamp(26px,5vh,48px);border:3px double #17345b;outline:1px solid #9b8050;outline-offset:4px;border-radius:50%;width:54px;height:54px;display:grid;place-items:center;font-size:13px;background:#f3eedf;color:#17345b}
+.cover-seal span{color:#9b8050;font-size:10px}
+#cover.page-view.active{display:grid!important}
+#home.page-view.active{display:grid!important}
+@media(max-height:700px){.cover-frame{min-height:calc(100svh - 32px);padding-top:25px;padding-bottom:80px}.monogram-stack{margin:12px 0}.monogram-letter{font-size:clamp(58px,13vh,88px)}.cover-seal{bottom:20px}}
+@media(prefers-reduced-motion:reduce){.page-view.active{animation:none!important}.sound-burst,.sound-burst span{animation:none!important}}
 /* Independent page options: show one section at a time instead of one long scrolling page */
 .page-view{display:none!important}
 .page-view.active{display:block!important;animation:rise .32s ease both}
@@ -23,6 +45,17 @@
 .option-arrow{margin-top:auto;font-size:13px;color:#17345b}
 .nav button.current{background:#fffaf0;color:#17345b;border-color:#fffaf0;font-weight:bold}
 @media(max-width:650px){.option-grid{grid-template-columns:1fr}.option-card{min-height:125px}.hero{min-height:auto}}
+/* Sound-wave burst on every tap/click */
+.sound-layer{position:fixed;inset:0;pointer-events:none;z-index:100;overflow:hidden}
+.sound-burst{position:absolute;width:44px;height:44px;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;gap:3px;filter:drop-shadow(0 2px 2px #17345b20)}
+.sound-burst:before,.sound-burst:after{content:"";position:absolute;border:1px solid #9b8050;border-radius:50%;animation:soundRing .75s ease-out forwards}
+.sound-burst:after{animation-delay:.12s}
+.sound-burst span{display:block;width:3px;border-radius:4px;background:#17345b;animation:soundWave .48s ease-in-out 2 alternate}
+.sound-burst span:nth-child(1),.sound-burst span:nth-child(5){height:8px}
+.sound-burst span:nth-child(2),.sound-burst span:nth-child(4){height:16px;animation-delay:.08s}
+.sound-burst span:nth-child(3){height:24px;background:#9b8050;animation-delay:.14s}
+@keyframes soundWave{from{transform:scaleY(.35);opacity:.65}to{transform:scaleY(1.15);opacity:1}}
+@keyframes soundRing{from{width:8px;height:8px;opacity:.8}to{width:54px;height:54px;opacity:0}}
 /* Formal navy-blue and ivory contract treatment */
 body{background:#f3eedf;color:#172d4b}
 .stars{opacity:.07;background-image:radial-gradient(#17345b 1px,transparent 1px),radial-gradient(#9b8050 1px,transparent 1px)}
@@ -66,9 +99,10 @@ body{background:#f3eedf;color:#172d4b}
 </head>
 <body>
 <div class="stars" aria-hidden="true"></div>
-<header class="topbar">
+<header class="topbar" id="topbar" style="display:none">
   <div class="brand">✦ မမေ့နိုင်သော ကတိတစ်ခု</div>
   <nav class="nav" aria-label="စာမျက်နှာရွေးချယ်ရန်">
+    <button onclick="go('cover')">မျက်နှာဖုံး</button>
     <button onclick="go('home')">ပင်မစာမျက်နှာ</button>
     <button onclick="go('principles')">ကတိသစ္စာပြုလွှာ</button>
     <button onclick="go('vows')">သစ္စာပြုလွှာ</button>
@@ -77,7 +111,19 @@ body{background:#f3eedf;color:#172d4b}
   </nav>
 </header>
 <main>
-<section class="hero wrap page-view active" id="home">
+<section class="cover-page page-view active" id="cover" aria-label="မျက်နှာဖုံးစာမျက်နှာ">
+  <div class="cover-frame">
+    <div class="cover-kicker">ကိုယ်ပိုင်ကတိကဝတ်စာချုပ်</div>
+    <div class="monogram-stack" aria-label="L အပေါ်၊ M အောက်"><span class="monogram-letter">L</span><span class="monogram-amp">&amp;</span><span class="monogram-letter">M</span></div>
+    <div class="cover-rule"></div>
+    <h1>ကျွန်ုပ်တို့၏ <em>ကတိစာချုပ်</em></h1>
+    <p class="cover-names">Mg Linn Thit Aung <span>နှင့်</span> Mg Min Khant</p>
+    <p class="cover-caption">ချစ်ခြင်း · သစ္စာ · အပြန်အလှန်လေးစားမှု</p>
+    <button class="btn primary cover-enter" onclick="go('home')">စာချုပ်ကို ဖွင့်ရန် <span aria-hidden="true">→</span></button>
+    <div class="cover-seal" aria-hidden="true">L <span>♥</span> M</div>
+  </div>
+</section>
+<section class="hero wrap page-view" id="home">
   <div class="hero-card">
     <div class="eyebrow">ကိုယ်ပိုင်ကတိစာချုပ် · အပြန်အလှန်ကတိကဝတ်မှတ်တမ်း</div><div class="contract-meta"><span>စာချုပ်အမှတ် MC-2026-01</span><span>ကိုယ်ပိုင်အမှတ်တရ မူရင်းစာချုပ်</span><span>Two Parties · Two လက်မှတ်များ</span></div>
     <div class="heart" aria-hidden="true">♥</div>
@@ -182,7 +228,7 @@ body{background:#f3eedf;color:#172d4b}
   </div>
 </section>
 </main>
-<footer class="footer"><div class="heart">♥</div><p>Mg Min Khant နှင့် Mg Linn Thit Aung တို့အတွက် ဂရုတစိုက် ဖန်တီးထားသည်</p><p>မိမိဆန္ဒအလျောက် ရွေးချယ်ပြီး နေ့စဉ်လက်တွေ့လိုက်နာသည့် ကတိသည် အဓိပ္ပာယ်ရှိပါသည်။</p></footer>
+<footer class="footer" style="display:none"><div class="heart">♥</div><p>Mg Min Khant နှင့် Mg Linn Thit Aung တို့အတွက် ဂရုတစိုက် ဖန်တီးထားသည်</p><p>မိမိဆန္ဒအလျောက် ရွေးချယ်ပြီး နေ့စဉ်လက်တွေ့လိုက်နာသည့် ကတိသည် အဓိပ္ပာယ်ရှိပါသည်။</p></footer>
 <div class="modal" id="signModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
  <div class="modal-card">
   <div class="modal-head"><h3 id="modalTitle">မိမိ၏ ကတိကို လက်မှတ်ရေးထိုးပါ</h3><button class="xbtn" onclick="closeSign()" aria-label="Close">×</button></div>
@@ -192,10 +238,37 @@ body{background:#f3eedf;color:#172d4b}
   <p class="small">မိမိသဘောတူညီမှုဖြင့် မိမိ၏ လက်မှတ်ကိုသာ ရေးထိုးပါ။ ဤနေရာတွင် သိမ်းဆည်းခြင်းသည် တရားဝင်အသိအမှတ်ပြု ဒစ်ဂျစ်တယ်လက်မှတ်ကို ဖန်တီးပေးခြင်း မဟုတ်ပါ။</p>
  </div>
 </div>
+<div class="sound-layer" id="soundLayer" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 (function(){
 const STORAGE_KEY='marriageContractKeepsake_v1';
+let audioContext=null;
+function clickSound(){
+ try{
+  const AudioCtx=window.AudioContext||window.webkitAudioContext;
+  if(!AudioCtx)return;
+  audioContext=audioContext||new AudioCtx();
+  if(audioContext.state==='suspended')audioContext.resume();
+  const now=audioContext.currentTime,osc=audioContext.createOscillator(),gain=audioContext.createGain();
+  osc.type='sine';osc.frequency.setValueAtTime(660,now);osc.frequency.exponentialRampToValueAtTime(880,now+.07);
+  gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.045,now+.012);gain.gain.exponentialRampToValueAtTime(.0001,now+.13);
+  osc.connect(gain);gain.connect(audioContext.destination);osc.start(now);osc.stop(now+.14);
+ }catch(e){}
+}
+function soundAnimation(x,y){
+ const layer=document.getElementById('soundLayer');if(!layer)return;
+ const burst=document.createElement('div');burst.className='sound-burst';
+ burst.style.left=x+'px';burst.style.top=y+'px';
+ for(let i=0;i<5;i++)burst.appendChild(document.createElement('span'));
+ layer.appendChild(burst);setTimeout(()=>burst.remove(),950);
+}
+document.addEventListener('click',e=>{
+ const target=e.target.closest('button,a,[role="button"]');
+ if(!target)return;
+ soundAnimation(e.clientX||window.innerWidth/2,e.clientY||window.innerHeight/2);
+ clickSound();
+},{passive:true});
 let activePartner=null, drawing=false, hasInk=false, ctx=null, canvas=null;
 const names={min:'Mg Min Khant',linn:'Mg Linn Thit Aung'};
 function getData(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(e){return {}}}
@@ -204,6 +277,8 @@ window.go=function(id){
  const target=document.getElementById(id);
  if(!target)return;
  document.querySelectorAll('.page-view').forEach(page=>page.classList.toggle('active',page.id===id));
+ document.getElementById('topbar').style.display=id==='cover'?'none':'flex';
+ document.querySelector('.footer').style.display=id==='cover'?'none':'block';
  window.scrollTo({top:0,behavior:'auto'});
  document.querySelectorAll('.nav button').forEach(button=>{
    const action=button.getAttribute('onclick')||'';
