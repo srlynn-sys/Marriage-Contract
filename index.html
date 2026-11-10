@@ -10,6 +10,19 @@
 :root{--bg:#f3eedf;--panel:#fffaf0;--panel2:#e8dfca;--gold:#17345b;--pink:#9b8050;--text:#172d4b;--muted:#58657a;--line:#b6a987;--green:#2f684b}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;line-height:1.65;min-height:100vh}button,input{font:inherit}button{cursor:pointer}.stars{position:fixed;inset:0;pointer-events:none;opacity:.25;background-image:radial-gradient(#fff 1px,transparent 1px),radial-gradient(#f3d49a 1px,transparent 1px);background-size:83px 83px,131px 131px;background-position:0 0,45px 60px;z-index:-1}.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px max(4vw,16px);background:#100a1bdc;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff18}.brand{font-size:14px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}.nav{display:flex;gap:7px;flex-wrap:wrap}.nav button,.btn{border:1px solid var(--line);color:var(--text);background:#ffffff08;border-radius:999px;padding:9px 14px;transition:.25s}.nav button:hover,.btn:hover{transform:translateY(-2px);border-color:var(--gold);background:#f3d49a12}.btn.primary{background:linear-gradient(120deg,#e8b6cb,#f3d49a);color:#251127;border:0;font-weight:bold}.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}.wrap{width:min(960px,92vw);margin:0 auto}.hero{min-height:82vh;display:grid;place-items:center;text-align:center;padding:70px 0 55px;position:relative}.hero-card{max-width:760px;animation:rise 1s ease both}.eyebrow{color:var(--gold);letter-spacing:.24em;text-transform:uppercase;font-size:12px}.hero h1{font-size:clamp(38px,8vw,76px);line-height:1.04;font-weight:normal;margin:22px 0}.hero h1 span{display:block;color:var(--pink);font-style:italic}.heart{font-size:30px;color:#ff9dbd;animation:pulse 2s infinite;display:inline-block}.intro{max-width:600px;margin:0 auto 28px;color:var(--muted);font-size:17px}.names{display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;margin:28px 0}.nameplate{border:1px solid #f3d49a55;padding:18px 25px;border-radius:18px;background:#ffffff08;min-width:210px}.nameplate strong{display:block;font-size:20px;color:var(--gold)}.nameplate small{color:var(--muted)}.section{padding:58px 0;scroll-margin-top:90px}.section-head{text-align:center;margin-bottom:30px}.section-head h2{font-weight:normal;font-size:clamp(28px,5vw,42px);margin:8px 0;color:var(--gold)}.section-head p{color:var(--muted);margin:0 auto;max-width:650px}.panel{background:linear-gradient(145deg,#241632eF,#160e22f2);border:1px solid #f3d49a36;border-radius:24px;padding:clamp(20px,4vw,38px);box-shadow:0 22px 70px #0003}.sign-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.sign-card{border:1px solid var(--line);border-radius:18px;padding:22px;background:#ffffff05}.sign-card h3{margin:0;color:var(--gold);font-weight:normal;font-size:22px}.sign-card p{color:var(--muted);font-size:14px}.saved-sign{height:90px;display:grid;place-items:center;border-bottom:1px dashed #a88cba;margin:8px 0 16px;color:#a88cba;font-style:italic}.saved-sign img{max-width:100%;height:85px;object-fit:contain;filter:brightness(1.15)}.status{font-size:12px;color:var(--muted);margin:10px 0}.status.done{color:var(--green)}.promise{border-left:2px solid var(--pink);padding:5px 0 5px 22px;margin:24px 0;color:#f6eaf5}.promise p{margin:0 0 12px}.promise p:last-child{margin:0}.page-label{display:flex;align-items:center;gap:10px;color:var(--pink);font-size:12px;letter-spacing:.15em;text-transform:uppercase}.page-label:after{content:"";height:1px;flex:1;background:var(--line)}.clause{padding:17px 0;border-bottom:1px solid #ffffff14}.clause:last-child{border-bottom:0}.clause h3{color:var(--gold);font-weight:normal;margin:0 0 5px}.clause p{margin:0;color:#e5d8e8}.legal-note{font-family:Arial,sans-serif;font-size:13px;color:var(--muted);background:#0c0813aa;border:1px solid #ffffff18;border-radius:14px;padding:16px;margin-top:22px}.seal{width:94px;height:94px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:20px auto;color:var(--gold);font-size:28px;box-shadow:0 0 0 7px #f3d49a0b,0 0 40px #f3d49a15}.record{display:none}.record.show{display:block;animation:rise .5s ease}.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.record-item{padding:15px;border-radius:14px;background:#ffffff06;border:1px solid #ffffff17}.record-item span{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.1em}.record-item strong{display:block;margin-top:5px;overflow-wrap:anywhere}.footer{text-align:center;padding:45px 15px 65px;color:var(--muted);font-size:13px}.footer .heart{font-size:18px}.modal{position:fixed;inset:0;z-index:30;background:#07040de8;backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px}.modal.open{display:flex}.modal-card{width:min(650px,100%);background:#1b1129;border:1px solid #f3d49a66;border-radius:22px;padding:22px;box-shadow:0 25px 100px #0009;animation:rise .25s ease}.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.modal-head h3{font-weight:normal;color:var(--gold);margin:0}.xbtn{border:0;background:none;color:white;font-size:28px}.canvas-wrap{margin:16px 0;border:1px dashed #9b7ca8;border-radius:12px;overflow:hidden;background:#fff;touch-action:none}.canvas-wrap canvas{display:block;width:100%;height:210px;touch-action:none;cursor:crosshair}.modal-help{font:13px Arial,sans-serif;color:var(--muted)}.modal-actions{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#f3d49a;color:#251127;border-radius:999px;padding:10px 18px;z-index:40;transition:.25s;font:14px Arial,sans-serif}.toast.show{opacity:1;transform:translate(-50%,0)}.small{font:12px Arial,sans-serif;color:var(--muted)}.page-break{border:0;border-top:1px solid #ffffff20;margin:28px 0}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}@media(max-width:650px){.sign-grid,.record-grid{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{width:100%}.nav button{font-size:12px;padding:7px 10px}.hero{min-height:75vh;padding-top:45px}.nameplate{min-width:min(250px,100%)}.section{padding:42px 0}.panel{border-radius:18px}}@media print{body{background:white!important;color:#222!important}.stars,.topbar,.hero .btn,.nav,.no-print,.footer,.modal,.toast{display:none!important}.hero{min-height:auto;padding:20px}.hero h1,.hero h1 span,.section-head h2,.clause h3,.sign-card h3,.eyebrow,.nameplate strong{color:#542444!important}.intro,.section-head p,.clause p,.sign-card p,.legal-note,.small{color:#333!important}.section{padding:20px 0;break-inside:avoid}.panel,.sign-card,.nameplate{background:white!important;border:1px solid #b99aa9!important;box-shadow:none!important}.saved-sign{border-color:#555}.saved-sign img{filter:none}.legal-note{border-color:#bbb;background:white!important}.page-label{color:#542444}.clause{border-color:#ddd}.record{display:block!important}.hero-card{animation:none}.heart{color:#a44}}
 
+/* Independent page options: show one section at a time instead of one long scrolling page */
+.page-view{display:none!important}
+.page-view.active{display:block!important;animation:rise .32s ease both}
+.hero.page-view.active{display:grid!important}
+.option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:28px auto 8px;max-width:680px;text-align:left;position:relative;z-index:1}
+.option-card{display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-height:155px;padding:20px;border:1px solid #b6a987;background:#f7f1e4;color:#17345b;text-align:left;border-radius:4px;box-shadow:inset 0 0 0 4px #f3eedf;transition:transform .2s,background .2s}
+.option-card:hover{transform:translateY(-3px);background:#e8dfca}
+.option-number{font:11px Arial,sans-serif;letter-spacing:.15em;color:#9b8050}
+.option-card strong{font-size:clamp(18px,3vw,23px);font-weight:normal}
+.option-card small{font-size:13px;line-height:1.5;color:#58657a}
+.option-arrow{margin-top:auto;font-size:13px;color:#17345b}
+.nav button.current{background:#fffaf0;color:#17345b;border-color:#fffaf0;font-weight:bold}
+@media(max-width:650px){.option-grid{grid-template-columns:1fr}.option-card{min-height:125px}.hero{min-height:auto}}
 /* Formal navy-blue and ivory contract treatment */
 body{background:#f3eedf;color:#172d4b}
 .stars{opacity:.07;background-image:radial-gradient(#17345b 1px,transparent 1px),radial-gradient(#9b8050 1px,transparent 1px)}
@@ -55,15 +68,16 @@ body{background:#f3eedf;color:#172d4b}
 <div class="stars" aria-hidden="true"></div>
 <header class="topbar">
   <div class="brand">✦ မမေ့နိုင်သော ကတိတစ်ခု</div>
-  <nav class="nav" aria-label="Contract pages">
+  <nav class="nav" aria-label="စာမျက်နှာရွေးချယ်ရန်">
+    <button onclick="go('home')">ပင်မစာမျက်နှာ</button>
+    <button onclick="go('principles')">ကတိသစ္စာပြုလွှာ</button>
+    <button onclick="go('vows')">သစ္စာပြုလွှာ</button>
     <button onclick="go('signatures')">လက်မှတ်များ</button>
-    <button onclick="go('vows')">ကတိသစ္စာများ</button>
-    <button onclick="go('principles')">အခြေခံမူများ</button>
-    <button onclick="go('record')">စာချုပ်မှတ်တမ်း</button>
+    <button onclick="go('record')">မှတ်တမ်း</button>
   </nav>
 </header>
 <main>
-<section class="hero wrap" id="home">
+<section class="hero wrap page-view active" id="home">
   <div class="hero-card">
     <div class="eyebrow">ကိုယ်ပိုင်ကတိစာချုပ် · အပြန်အလှန်ကတိကဝတ်မှတ်တမ်း</div><div class="contract-meta"><span>စာချုပ်အမှတ် MC-2026-01</span><span>ကိုယ်ပိုင်အမှတ်တရ မူရင်းစာချုပ်</span><span>Two Parties · Two လက်မှတ်များ</span></div>
     <div class="heart" aria-hidden="true">♥</div>
@@ -74,11 +88,16 @@ body{background:#f3eedf;color:#172d4b}
       <div class="heart" aria-hidden="true">∞</div>
       <div class="nameplate"><strong>Mg Linn Thit Aung</strong><small>မွေးသက္ကရာဇ် ၂၅ ဧပြီ ၂၀၀၇</small></div>
     </div>
-    <button class="btn primary" onclick="go('signatures')">ကျွန်ုပ်တို့၏ ကတိကို စတင်ရန် ↓</button>
+    <div class="option-grid">
+      <button class="option-card" onclick="go('principles')"><span class="option-number">၀၁</span><strong>ကတိသစ္စာပြုလွှာ</strong><small>စာချုပ်အပိုဒ်များ၊ စည်းကမ်းချက်များနှင့် အခြေခံမူများ</small><span class="option-arrow">ဖွင့်ရန် →</span></button>
+      <button class="option-card" onclick="go('vows')"><span class="option-number">၀၂</span><strong>သစ္စာပြုလွှာ</strong><small>တစ်ဦးချင်းစီ၏ သစ္စာကတိနှင့် အပြန်အလှန်ကတိများ</small><span class="option-arrow">ဖွင့်ရန် →</span></button>
+      <button class="option-card" onclick="go('signatures')"><span class="option-number">၀၃</span><strong>လက်မှတ်များ</strong><small>နှစ်ဦးစလုံး၏ လက်မှတ်နှင့် ကိုယ်ပိုင်တံဆိပ်များ</small><span class="option-arrow">ဖွင့်ရန် →</span></button>
+      <button class="option-card" onclick="go('record')"><span class="option-number">၀၄</span><strong>စာချုပ်မှတ်တမ်း</strong><small>သိမ်းဆည်းထားသော လက်မှတ်များနှင့် ပုံနှိပ်နိုင်သည့် မှတ်တမ်း</small><span class="option-arrow">ဖွင့်ရန် →</span></button>
+    </div>
     <p class="small" style="margin-top:20px">ချစ်ခြင်းဖြင့် ဖန်တီးထားသော ကိုယ်ပိုင်အမှတ်တရ</p>
   </div>
 </section>
-<section class="section wrap" id="signatures">
+<section class="section wrap page-view" id="signatures">
   <div class="section-head"><div class="eyebrow">အပိုဒ် (၁) · စာချုပ်တွင် လက်မှတ်ရေးထိုးခြင်း</div><h2>လက်မှတ်များ & Seals</h2><p>နှစ်ဦးစလုံးသည် မိမိတို့၏ သီးခြားနေရာတွင် လက်မှတ်ရေးထိုးနိုင်သည်။ မိမိအမည်ပါကတ်ကို ရွေးချယ်ပြီး လက်မှတ်ဆွဲကာ ဤစက်၏ ဘရောက်ဇာတွင် သိမ်းဆည်းပါ။</p></div>
   <div class="panel">
     <div class="sign-grid">
@@ -99,8 +118,8 @@ body{background:#f3eedf;color:#172d4b}
     <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:24px"><button class="btn" onclick="go('vows')">ကတိသစ္စာများသို့ ဆက်ရန် →</button><button class="btn" onclick="window.print()">ပုံနှိပ်ရန် / PDF အဖြစ်သိမ်းရန်</button></div>
   </div>
 </section>
-<section class="section wrap" id="vows">
-  <div class="section-head"><div class="eyebrow">အပိုဒ် (၂) · အပြန်အလှန် ကတိကဝတ်များ</div><h2>ကျွန်ုပ်တို့၏ စာချုပ်ပါ စည်းကမ်းချက်များ</h2><p>ဤကတိသစ္စာများသည် ကိုယ်ပိုင်ကတိကဝတ်များဖြစ်ပြီး မည်သည့်ဥပဒေကမျှ ဤစာချုပ်ကို အလိုအလျောက် တရားဝင်လက်ထပ်မှုအဖြစ် အသိအမှတ်ပြုသည်ဟု ဆိုလိုခြင်းမဟုတ်ပါ။</p></div>
+<section class="section wrap page-view" id="vows">
+  <div class="section-head"><div class="eyebrow">သီးခြားစာမျက်နှာ · နှစ်ဦး၏ သစ္စာကတိများ</div><h2>သစ္စာပြုလွှာ</h2><p>ဤကတိသစ္စာများသည် ကိုယ်ပိုင်ကတိကဝတ်များဖြစ်ပြီး မည်သည့်ဥပဒေကမျှ ဤစာချုပ်ကို အလိုအလျောက် တရားဝင်လက်ထပ်မှုအဖြစ် အသိအမှတ်ပြုသည်ဟု ဆိုလိုခြင်းမဟုတ်ပါ။</p></div>
   <div class="panel">
     <div class="page-label">မင်းခန့်၏ ကတိသစ္စာ</div>
     <div class="promise">
@@ -131,8 +150,8 @@ body{background:#f3eedf;color:#172d4b}
     <div style="text-align:center;margin-top:24px"><button class="btn" onclick="go('principles')">အခြေခံမူများကို ဖတ်ရန် →</button></div>
   </div>
 </section>
-<section class="section wrap" id="principles">
-  <div class="section-head"><div class="eyebrow">အပိုဒ် (၃) · လမ်းညွှန်အခြေခံမူများ</div><h2>အခွင့်အရေး၊ ဂုဏ်သိက္ခာနှင့် လေးစားမှု</h2><p>ကျွန်ုပ်တို့၏ ကတိကဝတ်များသည် နိုင်ငံတကာတွင် အသိအမှတ်ပြုထားသော လူ့အခွင့်အရေးအခြေခံမူများကို အခြေခံထားသည်။ ဤကိုးကားချက်များသည် ဗဟုသုတအတွက်ဖြစ်ပြီး ဥပဒေအကြံဉာဏ် သို့မဟုတ် လက်ထပ်မှတ်ပုံတင်ထားကြောင်း သက်သေမဟုတ်ပါ။</p></div>
+<section class="section wrap page-view" id="principles">
+  <div class="section-head"><div class="eyebrow">သီးခြားစာမျက်နှာ · စာချုပ်ပါ အခြေခံစည်းကမ်းချက်များ</div><h2>ကတိသစ္စာပြုလွှာ</h2><p>ကျွန်ုပ်တို့၏ ကတိကဝတ်များသည် နိုင်ငံတကာတွင် အသိအမှတ်ပြုထားသော လူ့အခွင့်အရေးအခြေခံမူများကို အခြေခံထားသည်။ ဤကိုးကားချက်များသည် ဗဟုသုတအတွက်ဖြစ်ပြီး ဥပဒေအကြံဉာဏ် သို့မဟုတ် လက်ထပ်မှတ်ပုံတင်ထားကြောင်း သက်သေမဟုတ်ပါ။</p></div>
   <div class="panel">
     <article class="clause"><h3>၀၁ · တန်းတူညီမျှမှုနှင့် ဂုဏ်သိက္ခာ</h3><p>အပြည်ပြည်ဆိုင်ရာ လူ့အခွင့်အရေးကြေညာစာတမ်း (UDHR) ၏ အပိုဒ် ၁ နှင့် ၂ တွင် လူသားအားလုံးသည် လွတ်လပ်ပြီး ဂုဏ်သိက္ခာနှင့် အခွင့်အရေးများတွင် တန်းတူညီမျှစွာ မွေးဖွားလာကြောင်း၊ ခွဲခြားဆက်ဆံမှုမရှိဘဲ အခွင့်အရေးများကို ခံစားခွင့်ရှိကြောင်း ဖော်ပြထားသည်။ ကျွန်ုပ်တို့သည် တစ်ဦးကိုတစ်ဦး တန်းတူဂုဏ်သိက္ခာဖြင့် ဆက်ဆံရန် ကတိပြုပါသည်။</p></article>
     <article class="clause"><h3>၀၂ · ကိုယ်ရေးကိုယ်တာနှင့် မိသားစုဘဝ</h3><p>UDHR အပိုဒ် ၁၂ သည် ကိုယ်ရေးကိုယ်တာနှင့် မိသားစုဘဝအတွင်း မတရားဝင်ရောက်စွက်ဖက်မှုမှ ကာကွယ်ပေးရေးကို ဖော်ပြထားသည်။ တစ်ဦး၏ ကိုယ်ရေးကိုယ်တာကို တစ်ဦးက လေးစားပြီး စောင့်ကြည့်ထိန်းချုပ်ခြင်း သို့မဟုတ် အတင်းအကျပ်ပြုခြင်းအစား အကန့်အသတ်များကို ဆွေးနွေးရန် ကတိပြုပါသည်။</p></article>
@@ -144,7 +163,7 @@ body{background:#f3eedf;color:#172d4b}
     <div style="text-align:center;margin-top:24px"><button class="btn" onclick="go('record')">စာချုပ်မှတ်တမ်းကို ကြည့်ရန် →</button></div>
   </div>
 </section>
-<section class="section wrap" id="record">
+<section class="section wrap page-view" id="record">
   <div class="section-head"><div class="eyebrow">အပိုဒ် (၄) · စာချုပ်မှတ်တမ်းနှင့် အသိအမှတ်ပြုခြင်း</div><h2>စာချုပ်မှတ်တမ်းနှင့် တံဆိပ်များ</h2><p>ဤဘရောက်ဇာတွင် သိမ်းဆည်းထားသော ကတိသစ္စာများနှင့် လက်မှတ်များ၏ ပုံနှိပ်နိုင်သော မှတ်တမ်းဖြစ်သည်။</p></div>
   <div class="panel">
     <div class="seal">M ♥ L</div>
@@ -181,7 +200,16 @@ let activePartner=null, drawing=false, hasInk=false, ctx=null, canvas=null;
 const names={min:'Mg Min Khant',linn:'Mg Linn Thit Aung'};
 function getData(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(e){return {}}}
 function notify(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(notify.timer);notify.timer=setTimeout(()=>t.classList.remove('show'),2600)}
-window.go=function(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})};
+window.go=function(id){
+ const target=document.getElementById(id);
+ if(!target)return;
+ document.querySelectorAll('.page-view').forEach(page=>page.classList.toggle('active',page.id===id));
+ window.scrollTo({top:0,behavior:'auto'});
+ document.querySelectorAll('.nav button').forEach(button=>{
+   const action=button.getAttribute('onclick')||'';
+   button.classList.toggle('current',action.includes("go('"+id+"')"));
+ });
+};
 function setupCanvas(){
  canvas=document.getElementById('signatureCanvas');
  const rect=canvas.getBoundingClientRect(), dpr=Math.max(window.devicePixelRatio||1,1);
