@@ -145,8 +145,8 @@ body{background:#f3eedf;color:#172d4b}
  body.print-contract .stars,body.print-contract #topbar,body.print-contract .footer,body.print-contract #contract-music,body.print-contract .no-print,body.print-contract #signModal,body.print-contract #toast{display:none!important}
  body.print-contract main{margin:0!important;padding:0!important}
  body.print-contract .page-view{display:none!important;animation:none!important}
- body.print-contract #contract-page{display:block!important;visibility:visible!important;width:210mm!important;height:297mm!important;min-height:297mm!important;max-width:none!important;margin:0!important;padding:0!important}
- body.print-contract #contract-document{display:block!important;visibility:visible!important;width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;padding:17mm 16mm 14mm!important;border:0!important;box-shadow:none!important;overflow:hidden!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ body.print-contract #contract-page{display:block!important;visibility:visible!important;width:210mm!important;height:auto!important;min-height:297mm!important;max-width:none!important;margin:0!important;padding:0!important;overflow:visible!important;break-after:avoid!important;page-break-after:avoid!important}
+ body.print-contract #contract-document{display:block!important;visibility:visible!important;width:210mm!important;height:auto!important;min-height:297mm!important;margin:0!important;padding:17mm 16mm 14mm!important;border:0!important;box-shadow:none!important;overflow:visible!important;break-inside:avoid-page;page-break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}
  body.print-contract .contract-inner-border{position:absolute!important;display:block!important}
  body.print-contract .contract-signature img{filter:none!important}
 }
@@ -490,10 +490,13 @@ window.printContract=function(){
  const missing=[];if(!data.min)missing.push('Mg Min Khant');if(!data.linn)missing.push('Mg Linn Thit Aung');
  if(missing.length)notify('လက်မှတ်မထည့်ရသေးပါ: '+missing.join(' နှင့် '));
  document.body.classList.add('print-contract');
- const done=()=>{document.body.classList.remove('print-contract');window.removeEventListener('afterprint',done)};
- window.addEventListener('afterprint',done);
- window.print();
- setTimeout(()=>document.body.classList.remove('print-contract'),1200);
+ let finished=false;
+ const done=()=>{if(finished)return;finished=true;document.body.classList.remove('print-contract');window.removeEventListener('afterprint',done);window.removeEventListener('focus',checkReturn)};
+ const checkReturn=()=>{if(document.visibilityState==='visible'&&finished===false){setTimeout(()=>{if(finished===false&&document.visibilityState==='visible')done()},1800)}};
+ window.addEventListener('afterprint',done,{once:true});
+ window.addEventListener('focus',checkReturn);
+ // Let mobile Safari apply the print-only A4 layout before opening its print sheet.
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{try{window.print()}catch(e){console.error('Print dialog error',e);done();notify('PDF ထုတ်ရန် Safari browser ဖြင့် ပြန်ဖွင့်ပြီး ထပ်စမ်းပါ။')}}));
 };
 window.downloadRecord=function(){
  const d=getData();const record={title:'ချစ်ခြင်းနှင့် ကတိကဝတ်ဆိုင်ရာ ကိုယ်ပိုင်ကြေညာချက်',partners:[{name:names.min,dateOfBirth:'2004-01-06',signatureSaved:!!d.min},{name:names.linn,dateOfBirth:'2007-04-25',signatureSaved:!!d.linn}],recordType:'ကိုယ်ပိုင်အမှတ်တရ; not a legal marriage certificate',savedAt:d.savedAt||null,commitments:['ချစ်ခြင်း','တန်းတူညီမျှမှု','ရိုးသားမှု','လေးစားမှု']};
