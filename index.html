@@ -45,6 +45,12 @@
 .option-arrow{margin-top:auto;font-size:13px;color:#17345b}
 .nav button.current{background:#fffaf0;color:#17345b;border-color:#fffaf0;font-weight:bold}
 @media(max-width:650px){.option-grid{grid-template-columns:1fr}.option-card{min-height:125px}.hero{min-height:auto}}
+/* Opening celebration: floating hearts, balls and flowers for 20 seconds */
+.opening-celebration{position:fixed;inset:0;z-index:999;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#142b4d18,#f3eedf08);animation:celebrationFade 1s ease-out 19s forwards}
+.opening-celebration .party-item{position:absolute;top:-55px;left:var(--x);font-size:var(--size);line-height:1;opacity:0;filter:drop-shadow(0 2px 3px #142b4d30);animation:partyFall var(--duration) linear var(--delay) forwards}
+@keyframes partyFall{0%{transform:translate3d(0,-8vh,0) rotate(0deg) scale(.65);opacity:0}8%{opacity:1}80%{opacity:.9}100%{transform:translate3d(var(--drift),112vh,0) rotate(var(--spin)) scale(1.1);opacity:0}}
+@keyframes celebrationFade{to{opacity:0;visibility:hidden}}
+@media(prefers-reduced-motion:reduce){.opening-celebration,.opening-celebration .party-item{animation:none!important;display:none!important}}
 /* Heart confetti on every page tap, plus sound waves on controls */
 .sound-layer{position:fixed;inset:0;pointer-events:none;z-index:100;overflow:hidden}
 .sound-burst{position:absolute;width:44px;height:44px;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;gap:3px;filter:drop-shadow(0 2px 2px #17345b20)}
@@ -246,6 +252,22 @@ body{background:#f3eedf;color:#172d4b}
 (function(){
 const STORAGE_KEY='marriageContractKeepsake_v1';
 let audioContext=null;
+function openingCelebration(){
+ const layer=document.createElement('div');layer.className='opening-celebration';layer.setAttribute('aria-hidden','true');
+ const symbols=['💗','💕','💖','🤍','💙','⚽','🏀','🏐','🌸','🌷','🌹','🌼','🌺','💐','🌻'];
+ for(let i=0;i<90;i++){
+  const item=document.createElement('span');item.className='party-item';
+  item.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  item.style.setProperty('--x',(Math.random()*100)+'%');
+  item.style.setProperty('--size',(18+Math.random()*24)+'px');
+  item.style.setProperty('--duration',(5+Math.random()*7)+'s');
+  item.style.setProperty('--delay',(Math.random()*13)+'s');
+  item.style.setProperty('--drift',((Math.random()-.5)*180)+'px');
+  item.style.setProperty('--spin',((Math.random()-.5)*900)+'deg');
+  layer.appendChild(item);
+ }
+ document.body.appendChild(layer);window.setTimeout(()=>layer.remove(),20500);
+}
 function clickSound(){
  try{
   const AudioCtx=window.AudioContext||window.webkitAudioContext;
@@ -338,6 +360,7 @@ document.getElementById('signModal').addEventListener('click',e=>{if(e.target.id
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSign()});
 window.addEventListener('resize',()=>{if(document.getElementById('signModal').classList.contains('open')){notify('မျက်နှာပြင်အရွယ်အစား မပြောင်းမီ လက်ရှိလက်မှတ်ကို အပြီးသတ်ရေးဆွဲပါ သို့မဟုတ် သိမ်းဆည်းပါ။')}})
 render();
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',openingCelebration,{once:true});else openingCelebration();
 })();
 </script>
 </body>
