@@ -150,6 +150,13 @@ body{background:#f3eedf;color:#172d4b}
  body.print-contract .contract-inner-border{position:absolute!important;display:block!important}
  body.print-contract .contract-signature img{filter:none!important}
 }
+/* Email/password sign-in dialog */
+.auth-form{display:grid;gap:12px;margin-top:18px}
+.auth-form label{font:13px Arial,sans-serif;color:#47566d;display:grid;gap:6px}
+.auth-form input{width:100%;min-width:0;padding:12px 13px;border:1px solid #b6a987;border-radius:3px;background:#fffdf7;color:#172d4b}
+.auth-form input:focus{outline:2px solid #17345b;outline-offset:1px}
+.auth-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.auth-modal-note{font:12px Arial,sans-serif;color:#58657a;margin:4px 0}
 </style>
 </head>
 <body>
@@ -177,8 +184,8 @@ body{background:#f3eedf;color:#172d4b}
     <p class="cover-names">Mg Linn Thit Aung <span>နှင့်</span> Mg Min Khant</p>
     <p class="cover-caption">ချစ်ခြင်း · သစ္စာ · အပြန်အလှန်လေးစားမှု</p>
     <div style="display:flex;flex-direction:column;gap:10px;align-items:center;margin-top:8px;position:relative;z-index:1">
-      <button class="btn primary cover-enter" onclick="openContractWithGoogle()">စတင်ဖတ်ရှုရန် <span aria-hidden="true">→</span></button>
-      <p class="small" id="cloud-auth-status-cover" role="status" style="max-width:300px;text-align:center;margin:0">လက်မှတ်များကို စက်များအကြား Sync လုပ်ရန် Google ဖြင့် ဝင်ပါ။</p>
+      <button class="btn primary cover-enter" onclick="openEmailLogin()">Gmail + Password ဖြင့် ဝင်ရန် <span aria-hidden="true">→</span></button>
+      <p class="small" id="cloud-auth-status-cover" role="status" style="max-width:300px;text-align:center;margin:0">Gmail လိပ်စာနှင့် Password ဖြင့် ဝင်ရောက်ပါ။</p>
     </div>
     
   </div>
@@ -206,11 +213,11 @@ body{background:#f3eedf;color:#172d4b}
   </div>
 </section>
 <section class="section wrap page-view" id="signatures">
-  <div class="section-head"><div class="eyebrow">အပိုဒ် (၁) · စာချုပ်တွင် လက်မှတ်ရေးထိုးခြင်း</div><h2>လက်မှတ်များ & Seals</h2><p>Google အကောင့်ဖြင့် ဝင်ပြီး လက်မှတ်များကို Cloud တွင် သိမ်းဆည်းနိုင်သည်။ ခွင့်ပြုထားသော အကောင့်နှစ်ခုသာ အသုံးပြုနိုင်သည်။</p></div>
+  <div class="section-head"><div class="eyebrow">အပိုဒ် (၁) · စာချုပ်တွင် လက်မှတ်ရေးထိုးခြင်း</div><h2>လက်မှတ်များ & Seals</h2><p>Gmail လိပ်စာနှင့် Password ဖြင့် ဝင်ပြီး လက်မှတ်များကို Cloud တွင် Sync လုပ်နိုင်သည်။ ခွင့်ပြုထားသော အကောင့်နှစ်ခုသာ အသုံးပြုနိုင်သည်။</p></div>
   <div class="panel" style="margin-bottom:18px">
     <h3 style="margin-top:0">☁️ Firebase Cloud Sync</h3>
     <p class="small" id="cloud-auth-status" role="status">Firebase ချိတ်ဆက်မှုကို စစ်ဆေးနေသည်…</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button class="btn primary" id="cloud-signin" type="button">Google ဖြင့် ဝင်ရန်</button><button class="btn" id="cloud-signout" type="button" style="display:none">ထွက်ရန်</button></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button class="btn primary" id="cloud-signin" type="button">Gmail + Password ဖြင့် ဝင်ရန်</button><button class="btn" id="cloud-signout" type="button" style="display:none">ထွက်ရန်</button></div>
     <p class="small">ခွင့်ပြုထားသော Gmail: thitlinn680@gmail.com နှင့် mahar612004@gmail.com</p>
   </div>
   <div class="panel">
@@ -333,6 +340,18 @@ body{background:#f3eedf;color:#172d4b}
   <p class="small">မိမိသဘောတူညီမှုဖြင့် မိမိ၏ လက်မှတ်ကိုသာ ရေးထိုးပါ။ ဤနေရာတွင် သိမ်းဆည်းခြင်းသည် တရားဝင်အသိအမှတ်ပြု ဒစ်ဂျစ်တယ်လက်မှတ်ကို ဖန်တီးပေးခြင်း မဟုတ်ပါ။</p>
  </div>
 </div>
+<div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+ <div class="modal-card">
+  <div class="modal-head"><h3 id="authModalTitle">Gmail + Password ဖြင့် ဝင်ရန်</h3><button class="xbtn" type="button" onclick="closeEmailLogin()" aria-label="ပိတ်ရန်">×</button></div>
+  <p class="auth-modal-note">ခွင့်ပြုထားသော Gmail အကောင့်နှစ်ခုထဲမှ တစ်ခုကို အသုံးပြုပါ။ အကောင့်အသစ်ဖွင့်ရန် မလိုပါ။</p>
+  <form class="auth-form" id="emailLoginForm">
+   <label for="loginEmail">Gmail လိပ်စာ<input id="loginEmail" name="email" type="email" autocomplete="username" inputmode="email" placeholder="name@gmail.com" required></label>
+   <label for="loginPassword">Password<input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Password" required minlength="6"></label>
+   <p class="small" id="email-login-error" role="status" aria-live="polite"></p>
+   <div class="auth-actions"><button class="btn primary" id="emailLoginSubmit" type="submit">ဝင်ရန်</button><button class="btn" type="button" onclick="resetLoginPassword()">Password မေ့နေပါသလား?</button><button class="btn" type="button" onclick="closeEmailLogin()">ပိတ်ရန်</button></div>
+  </form>
+ </div>
+</div>
 <div class="sound-layer" id="soundLayer" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
@@ -407,8 +426,8 @@ function getData(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'
 function setCloudStatus(message){["cloud-auth-status","cloud-auth-status-cover"].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=message})}
 function allowedUser(user){return !!user&&ALLOWED_EMAILS.includes(String(user.email||"").toLowerCase())}
 function saveLocalData(data){localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}
-async function writeCloudData(data){if(!cloudUser||!allowedUser(cloudUser)||!cloudDb)throw new Error("Sign in with an authorized Google account first.");await cloudDb.collection("contracts").doc("main").set({min:data.min||null,linn:data.linn||null,savedAt:data.savedAt||new Date().toISOString(),updatedAt:firebase.firestore.FieldValue.serverTimestamp(),updatedBy:cloudUser.email},{merge:true})}
-function startCloudSync(user){if(cloudUnsubscribe){cloudUnsubscribe();cloudUnsubscribe=null}cloudUser=user;const signin=document.getElementById("cloud-signin"),signinCover=document.getElementById("cloud-signin-cover"),signout=document.getElementById("cloud-signout");if(!user){if(signin)signin.style.display="";if(signinCover)signinCover.style.display="";if(signout)signout.style.display="none";setCloudStatus("Google အကောင့်ဖြင့် ဝင်ရောက်ပါ။ လက်မှတ်များကို ယခုစက်တွင်သာ သိမ်းဆည်းထားနိုင်သေးသည်။");return}if(!allowedUser(user)){setCloudStatus("ဤ Gmail ကို အသုံးပြုခွင့်မရှိပါ။ ခွင့်ပြုထားသော Gmail ဖြင့် ဝင်ပါ။");cloudAuth.signOut().catch(()=>{});return}if(signin)signin.style.display="none";if(signinCover)signinCover.style.display="none";if(signout)signout.style.display="";setCloudStatus("Google အကောင့်ဖြင့် ဝင်ရောက်ပြီးပါပြီ — Cloud မှ လက်မှတ်များကို ရယူနေသည်…");cloudUnsubscribe=cloudDb.collection("contracts").doc("main").onSnapshot(async snap=>{if(!snap.exists){const local=getData();if(local.min||local.linn){try{await writeCloudData(local);setCloudStatus("လက်မှတ်များကို Cloud သို့ စတင်သိမ်းဆည်းပြီးပါပြီ။")}catch(e){setCloudStatus("Cloud မသိမ်းနိုင်ပါ။ Firestore Security Rules ကို စစ်ဆေးပါ။");console.error(e)}}else setCloudStatus("Cloud Sync အသင့်ဖြစ်ပါပြီ။ လက်မှတ်ရေးထိုးနိုင်သည်။");return}const remote=snap.data()||{};const merged={min:remote.min||null,linn:remote.linn||null,savedAt:remote.savedAt||null};try{saveLocalData(merged)}catch(e){}render();setCloudStatus("✓ Cloud Sync ချိတ်ဆက်ပြီး — လက်မှတ်များကို အခြားစက်များတွင်လည်း ပြန်မြင်နိုင်သည်။")},err=>{console.error("Firestore listener",err);setCloudStatus("Cloud ဖတ်မရပါ။ Firestore Security Rules ကို စစ်ဆေးပါ။")})}
+async function writeCloudData(data){if(!cloudUser||!allowedUser(cloudUser)||!cloudDb)throw new Error("ခွင့်ပြုထားသော Gmail နှင့် Password ဖြင့် အရင်ဝင်ပါ။");await cloudDb.collection("contracts").doc("main").set({min:data.min||null,linn:data.linn||null,savedAt:data.savedAt||new Date().toISOString(),updatedAt:firebase.firestore.FieldValue.serverTimestamp(),updatedBy:cloudUser.email},{merge:true})}
+function startCloudSync(user){if(cloudUnsubscribe){cloudUnsubscribe();cloudUnsubscribe=null}cloudUser=user;const signin=document.getElementById("cloud-signin"),signinCover=document.getElementById("cloud-signin-cover"),signout=document.getElementById("cloud-signout");if(!user){if(signin)signin.style.display="";if(signinCover)signinCover.style.display="";if(signout)signout.style.display="none";setCloudStatus("Gmail နှင့် Password ဖြင့် ဝင်ပါ။ လက်မှတ်များကို ယခုစက်တွင်သာ သိမ်းဆည်းထားနိုင်သေးသည်။");return}if(!allowedUser(user)){setCloudStatus("ဤ Gmail ကို အသုံးပြုခွင့်မရှိပါ။ ခွင့်ပြုထားသော Gmail ဖြင့် ဝင်ပါ။");cloudAuth.signOut().catch(()=>{});return}if(signin)signin.style.display="none";if(signinCover)signinCover.style.display="none";if(signout)signout.style.display="";setCloudStatus("အကောင့်ဝင်ပြီးပါပြီ — Cloud မှ လက်မှတ်များကို ရယူနေသည်…");cloudUnsubscribe=cloudDb.collection("contracts").doc("main").onSnapshot(async snap=>{if(!snap.exists){const local=getData();if(local.min||local.linn){try{await writeCloudData(local);setCloudStatus("လက်မှတ်များကို Cloud သို့ စတင်သိမ်းဆည်းပြီးပါပြီ။")}catch(e){setCloudStatus("Cloud မသိမ်းနိုင်ပါ။ Firestore Security Rules ကို စစ်ဆေးပါ။");console.error(e)}}else setCloudStatus("Cloud Sync အသင့်ဖြစ်ပါပြီ။ လက်မှတ်ရေးထိုးနိုင်သည်။");return}const remote=snap.data()||{};const merged={min:remote.min||null,linn:remote.linn||null,savedAt:remote.savedAt||null};try{saveLocalData(merged)}catch(e){}render();setCloudStatus("✓ Cloud Sync ချိတ်ဆက်ပြီး — လက်မှတ်များကို အခြားစက်များတွင်လည်း ပြန်မြင်နိုင်သည်။")},err=>{console.error("Firestore listener",err);setCloudStatus("Cloud ဖတ်မရပါ။ Firestore Security Rules ကို စစ်ဆေးပါ။")})}
 function notify(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(notify.timer);notify.timer=setTimeout(()=>t.classList.remove('show'),2600)}
 window.go=function(id){
  const target=document.getElementById(id);
@@ -438,7 +457,7 @@ window.closeSign=function(){document.getElementById('signModal').classList.remov
 window.clearCanvas=function(){if(!ctx)return;const r=canvas.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);hasInk=false};
 window.saveSign=async function(){
  if(!activePartner||!canvas||!hasInk){notify('မသိမ်းမီ လက်မှတ်ကို ရေးဆွဲပေးပါ။');return}
- try{const data=getData();data[activePartner]=canvas.toDataURL('image/png');data.savedAt=new Date().toISOString();saveLocalData(data);render();if(cloudUser&&allowedUser(cloudUser)){try{await writeCloudData(data);closeSign();notify('လက်မှတ်ကို Firebase Cloud တွင် သိမ်းဆည်းပြီးပါပြီ။')}catch(e){console.error(e);closeSign();notify('ဤစက်တွင် သိမ်းပြီးပါပြီ၊ Cloud မသိမ်းနိုင်ပါ။ Firestore Rules ကို စစ်ဆေးပါ။')}}else{closeSign();notify('ဤစက်တွင် သိမ်းပြီးပါပြီ။ အခြားစက်သို့ Sync လုပ်ရန် Google ဖြင့် အရင်ဝင်ပါ။')}}catch(e){console.error(e);notify('လက်မှတ်သိမ်းဆည်း၍ မရပါ။')}
+ try{const data=getData();data[activePartner]=canvas.toDataURL('image/png');data.savedAt=new Date().toISOString();saveLocalData(data);render();if(cloudUser&&allowedUser(cloudUser)){try{await writeCloudData(data);closeSign();notify('လက်မှတ်ကို Firebase Cloud တွင် သိမ်းဆည်းပြီးပါပြီ။')}catch(e){console.error(e);closeSign();notify('ဤစက်တွင် သိမ်းပြီးပါပြီ၊ Cloud မသိမ်းနိုင်ပါ။ Firestore Rules ကို စစ်ဆေးပါ။')}}else{closeSign();notify('ဤစက်တွင် သိမ်းပြီးပါပြီ။ အခြားစက်သို့ Sync လုပ်ရန် Gmail + Password ဖြင့် အရင်ဝင်ပါ။')}}catch(e){console.error(e);notify('လက်မှတ်သိမ်းဆည်း၍ မရပါ။')}
 };
 function putSignature(elId,src){const el=document.getElementById(elId);if(!el)return;el.replaceChildren();if(src){const img=document.createElement('img');img.src=src;img.alt='Saved signature';el.appendChild(img)}else{el.textContent='လက်မှတ် မသိမ်းဆည်းရသေးပါ'}}
 function render(){
@@ -485,13 +504,18 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSign()});
 window.addEventListener('resize',()=>{if(document.getElementById('signModal').classList.contains('open')){notify('မျက်နှာပြင်အရွယ်အစား မပြောင်းမီ လက်ရှိလက်မှတ်ကို အပြီးသတ်ရေးဆွဲပါ သို့မဟုတ် သိမ်းဆည်းပါ။')}})
 render();
 const signinButton=document.getElementById("cloud-signin"),signoutButton=document.getElementById("cloud-signout");
-async function performGoogleSignIn(){if(!cloudAuth){setCloudStatus("Firebase စတင်မရပါ။ စာမျက်နှာကို ပြန်ဖွင့်ပါ။");return false}try{const provider=new firebase.auth.GoogleAuthProvider();provider.setCustomParameters({prompt:"select_account"});const result=await cloudAuth.signInWithPopup(provider);if(!allowedUser(result.user)){await cloudAuth.signOut();notify("ဤ Gmail ကို အသုံးပြုခွင့်မရှိပါ။");return false}return true}catch(e){console.error("Google Sign-in error",e);if(e.code==="auth/popup-blocked"||e.code==="auth/popup-closed-by-user"){setCloudStatus("ဖုန်း၏ browser က Google login popup ကို ပိတ်ထားသည်။ Safari ဖြင့် website ကို တိုက်ရိုက်ဖွင့်ပြီး ထပ်ကြိုးစားပါ။ Redirect login ကို အသုံးမပြုတော့ပါ။");return false}else if(e.code==="permission-denied"){setCloudStatus("Firestore Security Rules ကို စစ်ဆေးပါ။");return false}else if(e.code==="auth/operation-not-supported-in-this-environment"){setCloudStatus("ဒီ in-app browser မှာ Google login မရနိုင်ပါ။ Safari ဖြင့် website ကို တိုက်ရိုက်ဖွင့်ပါ။");return false}else{setCloudStatus("Google Sign-in မအောင်မြင်ပါ: "+(e.code||"unknown error"));return false}}}
-window.openContractWithGoogle=async function(){if(cloudUser&&allowedUser(cloudUser)){go("home");startContractMusic();return}try{sessionStorage.setItem("openContractAfterGoogle","1")}catch(e){}const signedIn=await performGoogleSignIn();if(signedIn){go("home");startContractMusic()}};
+window.openEmailLogin=function(){if(cloudUser&&allowedUser(cloudUser)){go("home");startContractMusic();return}const modal=document.getElementById("authModal");const error=document.getElementById("email-login-error");if(error)error.textContent="";if(modal)modal.classList.add("open");document.body.style.overflow="hidden";setTimeout(()=>document.getElementById("loginEmail")?.focus(),80)};
+window.closeEmailLogin=function(){const modal=document.getElementById("authModal");if(modal)modal.classList.remove("open");document.body.style.overflow="";const form=document.getElementById("emailLoginForm");if(form)form.reset()};
+window.resetLoginPassword=async function(){if(!cloudAuth){setCloudStatus("Firebase စတင်မရပါ။");return}const email=(document.getElementById("loginEmail")?.value||"").trim().toLowerCase();const error=document.getElementById("email-login-error");if(!email){if(error)error.textContent="Password ပြန်သတ်မှတ်ရန် Gmail လိပ်စာကို အရင်ထည့်ပါ။";return}if(!ALLOWED_EMAILS.includes(email)){if(error)error.textContent="ဤ Gmail ကို အသုံးပြုခွင့်မရှိပါ။";return}try{await cloudAuth.sendPasswordResetEmail(email);if(error)error.textContent="Password ပြန်သတ်မှတ်ရန် link ကို Gmail သို့ ပို့ပြီးပါပြီ။ Inbox/Spam ကို စစ်ပါ။"}catch(e){console.error("Password reset error",e);if(error)error.textContent="Password reset မလုပ်နိုင်ပါ: "+(e.code||"unknown error")+" — Firebase Email/Password account ကို စစ်ပါ။"}};
+async function performEmailPasswordSignIn(event){if(event)event.preventDefault();const email=(document.getElementById("loginEmail")?.value||"").trim().toLowerCase();const password=document.getElementById("loginPassword")?.value||"";const error=document.getElementById("email-login-error");const submit=document.getElementById("emailLoginSubmit");if(!cloudAuth){if(error)error.textContent="Firebase စတင်မရပါ။ စာမျက်နှာကို ပြန်ဖွင့်ပါ။";return false}if(!ALLOWED_EMAILS.includes(email)){if(error)error.textContent="ဤ Gmail ကို အသုံးပြုခွင့်မရှိပါ။ ခွင့်ပြုထားသော Gmail ဖြင့် ဝင်ပါ။";return false}if(!password){if(error)error.textContent="Password ထည့်ပေးပါ။";return false}if(submit)submit.disabled=true;if(error)error.textContent="ဝင်ရောက်နေသည်…";try{const result=await cloudAuth.signInWithEmailAndPassword(email,password);if(!allowedUser(result.user)){await cloudAuth.signOut();if(error)error.textContent="ဤ Gmail ကို အသုံးပြုခွင့်မရှိပါ။";return false}closeEmailLogin();go("home");startContractMusic();return true}catch(e){console.error("Email/password sign-in error",e);let message="ဝင်မရပါ။ Gmail နှင့် Password ကို စစ်ဆေးပါ။";if(e.code==="auth/invalid-credential"||e.code==="auth/wrong-password"||e.code==="auth/user-not-found")message="Gmail သို့မဟုတ် Password မှားနေသည်။ Firebase Console တွင် Email/Password အကောင့်ဖန်တီးထားကြောင်း စစ်ပါ။";else if(e.code==="auth/operation-not-allowed")message="Firebase Console → Authentication → Sign-in method တွင် Email/Password ကို Enable လုပ်ပေးပါ။";else if(e.code==="auth/too-many-requests")message="ကြိုးစားမှုများလွန်းနေပါသည်။ ခဏစောင့်ပြီး ထပ်ကြိုးစားပါ။";else if(e.code==="auth/network-request-failed")message="အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပါ။";if(error)error.textContent=message;setCloudStatus(message);return false}finally{if(submit)submit.disabled=false}}
+document.getElementById("emailLoginForm")?.addEventListener("submit",performEmailPasswordSignIn);
+document.getElementById("authModal")?.addEventListener("click",e=>{if(e.target.id==="authModal")closeEmailLogin()});
+window.openContractWithGoogle=window.openEmailLogin;
  window.startContractMusic=function(){const frame=document.getElementById("contract-music-frame");if(!frame)return;let iframe=frame.querySelector("iframe");if(!iframe){iframe=document.createElement("iframe");iframe.title="Background music";iframe.width="1";iframe.height="1";iframe.style.border="0";iframe.allow="autoplay; encrypted-media";iframe.src="https://www.youtube-nocookie.com/embed/k7M9MWdhFQs?autoplay=1&playsinline=1&controls=0&loop=1&playlist=k7M9MWdhFQs&rel=0";frame.appendChild(iframe)}};
  
-if(signinButton)signinButton.addEventListener("click",performGoogleSignIn);
+if(signinButton)signinButton.addEventListener("click",window.openEmailLogin);
 if(signoutButton)signoutButton.addEventListener("click",()=>cloudAuth&&cloudAuth.signOut());
-if(cloudAuth){try{sessionStorage.removeItem("openContractAfterGoogle")}catch(e){}cloudAuth.onAuthStateChanged(user=>startCloudSync(user))}else setCloudStatus("Firebase SDK ကို မတင်နိုင်ပါ။ အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပါ။");
+if(cloudAuth){cloudAuth.onAuthStateChanged(user=>startCloudSync(user))}else setCloudStatus("Firebase SDK ကို မတင်နိုင်ပါ။ အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပါ။");
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',openingCelebration,{once:true});else openingCelebration();
 })();
 </script>
