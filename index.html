@@ -103,6 +103,41 @@ body{background:#f3eedf;color:#172d4b}
 .hero-card{border:1px solid #c5b58e;padding:clamp(20px,4vw,42px);background:#fffaf0;box-shadow:0 14px 40px #17345b10;position:relative}
 .hero-card:before{content:"";position:absolute;inset:7px;border:1px solid #c5b58e;pointer-events:none}
 @media print{body{background:#fffaf0!important;color:#172d4b!important}.topbar{background:#142b4d!important}.brand,.nav button{color:#fffaf0!important}.hero-card{border:1px solid #17345b!important;box-shadow:none!important}.panel:before{display:none}.panel,.sign-card,.nameplate,.record-item,.legal-note{background:#fffaf0!important;color:#172d4b!important}.clause p,.promise,.intro,.section-head p,.small,.legal-note{color:#333!important}.seal{background:#17345b!important;color:#fffaf0!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}.stamp{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+/* Elegant A4 contract export */
+.a4-sheet{position:relative;width:210mm;min-height:297mm;margin:0 auto;background:#fffdf7;color:#172d4b;padding:17mm 16mm 14mm;box-sizing:border-box;border:1px solid #b6a987;box-shadow:0 16px 42px #172d4b20;font-family:Georgia,'Times New Roman',serif;overflow:hidden}
+.contract-inner-border{position:absolute;inset:5mm;border:3px double #17345b;pointer-events:none}
+.contract-kicker{text-align:center;font:10px Arial,sans-serif;letter-spacing:.28em;color:#9b8050;margin-top:2mm}
+.contract-emblem{width:18mm;height:18mm;margin:5mm auto 3mm;border:2px double #9b8050;outline:1px solid #17345b;outline-offset:2px;border-radius:50%;display:grid;place-items:center;font-size:17px;color:#17345b}
+.contract-emblem span{font-size:9px;color:#9b8050}
+.a4-sheet h1{text-align:center;font-size:23px;line-height:1.5;font-weight:normal;margin:4mm 0 1mm;color:#17345b}
+.contract-subtitle{text-align:center;margin:0;color:#9b8050;font-size:12px;letter-spacing:.08em}
+.contract-rule{height:1px;background:linear-gradient(90deg,transparent,#9b8050,#17345b,#9b8050,transparent);margin:7mm 0}
+.contract-intro{font-size:13px;line-height:1.9;text-align:justify;margin:0 0 5mm}
+.contract-clauses{display:grid;gap:3.5mm}
+.contract-clauses>div{border-left:2px solid #9b8050;padding:1mm 0 1mm 4mm}
+.contract-clauses b{font-size:13px;color:#17345b}
+.contract-clauses p{font-size:11.5px;line-height:1.75;margin:1mm 0 0;color:#34445a}
+.contract-declaration{font-size:11px;line-height:1.8;text-align:justify;border-top:1px solid #d7c9a9;border-bottom:1px solid #d7c9a9;padding:3mm 0;margin:5mm 0}
+.contract-signatures{display:grid;grid-template-columns:1fr 1fr;gap:12mm;margin-top:7mm;text-align:center}
+.contract-signature{height:20mm;display:flex;align-items:center;justify-content:center;color:#9a8d76;font-size:10px}
+.contract-signature img{max-width:90%;max-height:19mm;object-fit:contain}
+.contract-sign-line{border-top:1px solid #17345b;margin:0 3mm 2mm}
+.contract-signature-block strong{display:block;font-size:12px;font-weight:normal}
+.contract-signature-block small{display:block;font-size:10px;color:#9b8050;margin-top:1mm}
+.contract-date-row{display:flex;justify-content:space-between;gap:8px;font-size:9.5px;color:#59677a;margin-top:7mm;padding-top:3mm;border-top:1px solid #e2d8c2}
+.contract-footer{text-align:center;color:#9b8050;font-size:9px;letter-spacing:.08em;margin-top:5mm}
+@media(max-width:750px){.a4-sheet{width:100%;min-height:0;padding:28px 24px;margin:0 auto}.contract-inner-border{inset:8px}.a4-sheet h1{font-size:20px}.contract-clauses{gap:10px}.contract-signatures{gap:12px}.contract-signature{height:65px}}
+@page{size:A4 portrait;margin:0}
+@media print{
+ body.print-contract{background:#fff!important;margin:0!important;padding:0!important}
+ body.print-contract .stars,body.print-contract #topbar,body.print-contract .footer,body.print-contract #contract-music,body.print-contract .no-print,body.print-contract #signModal,body.print-contract #toast{display:none!important}
+ body.print-contract main{margin:0!important;padding:0!important}
+ body.print-contract .page-view{display:none!important;animation:none!important}
+ body.print-contract #contract-page{display:block!important;visibility:visible!important;width:210mm!important;height:297mm!important;min-height:297mm!important;max-width:none!important;margin:0!important;padding:0!important}
+ body.print-contract #contract-document{display:block!important;visibility:visible!important;width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;padding:17mm 16mm 14mm!important;border:0!important;box-shadow:none!important;overflow:hidden!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ body.print-contract .contract-inner-border{position:absolute!important;display:block!important}
+ body.print-contract .contract-signature img{filter:none!important}
+}
 </style>
 </head>
 <body>
@@ -115,6 +150,7 @@ body{background:#f3eedf;color:#172d4b}
     <button onclick="go('principles')">ကတိသစ္စာပြုလွှာ</button>
     <button onclick="go('vows')">သစ္စာပြုလွှာ</button>
     <button onclick="go('signatures')">လက်မှတ်များ</button>
+    <button onclick="go('contract-page')">စာချုပ်</button>
     <button onclick="go('record')">မှတ်တမ်း</button>
   </nav>
 </header>
@@ -151,6 +187,7 @@ body{background:#f3eedf;color:#172d4b}
       <button class="option-card" onclick="go('vows')"><span class="option-number">၀၂</span><strong>သစ္စာပြုလွှာ</strong><small>တစ်ဦးချင်းစီ၏ သစ္စာကတိနှင့် အပြန်အလှန်ကတိများ</small><span class="option-arrow">ဖွင့်ရန် →</span></button>
       <button class="option-card" onclick="go('signatures')"><span class="option-number">၀၃</span><strong>လက်မှတ်များ</strong><small>နှစ်ဦးစလုံး၏ လက်မှတ်နှင့် ကိုယ်ပိုင်တံဆိပ်များ</small><span class="option-arrow">ဖွင့်ရန် →</span></button>
       <button class="option-card" onclick="go('record')"><span class="option-number">၀၄</span><strong>စာချုပ်မှတ်တမ်း</strong><small>သိမ်းဆည်းထားသော လက်မှတ်များနှင့် ပုံနှိပ်နိုင်သည့် မှတ်တမ်း</small><span class="option-arrow">ဖွင့်ရန် →</span></button>
+      <button class="option-card" onclick="go('contract-page')"><span class="option-number">၀၅</span><strong>စာချုပ်</strong><small>နှစ်ဦး၏ သိမ်းဆည်းထားသော လက်မှတ်များပါဝင်သည့် A4 စာချုပ်ကို PDF ထုတ်ရန်</small><span class="option-arrow">စာချုပ်ပြုလုပ်ရန် →</span></button>
     </div>
     <p class="small" style="margin-top:20px">ချစ်ခြင်းဖြင့် ဖန်တီးထားသော ကိုယ်ပိုင်အမှတ်တရ</p>
   </div>
@@ -226,6 +263,33 @@ body{background:#f3eedf;color:#172d4b}
     <div class="legal-note"><strong>ကိုးကားဖတ်ရှုရန် စာတမ်းများ —</strong> ကုလသမဂ္ဂ၏ ၁၉၄၈ ခုနှစ် အပြည်ပြည်ဆိုင်ရာ လူ့အခွင့်အရေးကြေညာစာတမ်း အပိုဒ် ၁၊ ၂၊ ၁၂၊ ၁၆ နှင့် ၁၉၆၆ ခုနှစ် အပြည်ပြည်ဆိုင်ရာ နိုင်ငံသားနှင့် နိုင်ငံရေးအခွင့်အရေးဆိုင်ရာ သဘောတူစာချုပ် အပိုဒ် ၂၊ ၂၆။ တရားဝင်စာသား — <a href="https://www.un.org/en/about-us/universal-declaration-of-human-rights" target="_blank" rel="noopener" style="color:var(--gold)">UDHR — ကုလသမဂ္ဂ</a> · <a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/international-covenant-civil-and-political-rights" target="_blank" rel="noopener" style="color:var(--gold)">ICCPR — လူ့အခွင့်အရေးမဟာမင်းကြီးရုံး</a>.</div>
     <div style="text-align:center;margin-top:24px"><button class="btn" onclick="go('record')">စာချုပ်မှတ်တမ်းကို ကြည့်ရန် →</button></div>
   </div>
+</section>
+<section class="section wrap page-view" id="contract-page">
+  <div class="section-head no-print"><div class="eyebrow">A4 · PRINT READY</div><h2>ကိုယ်ပိုင်ကတိကဝတ်စာချုပ်</h2><p>လက်မှတ်များစာမျက်နှာတွင် သိမ်းဆည်းထားသော လက်မှတ်များကို အောက်ပါစာချုပ်ထဲသို့ အလိုအလျောက် ထည့်သွင်းပေးပါမည်။</p></div>
+  <div class="no-print" style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 20px"><button class="btn primary" onclick="printContract()">စာချုပ်ကို PDF ထုတ်ရန်</button><button class="btn" onclick="go('signatures')">လက်မှတ်များ ပြင်ဆင်ရန်</button></div>
+  <article class="a4-sheet" id="contract-document">
+    <div class="contract-inner-border"></div>
+    <div class="contract-kicker">A PERSONAL COVENANT</div>
+    <div class="contract-emblem">L <span>♥</span> M</div>
+    <h1>ကိုယ်ပိုင်ကတိကဝတ်စာချုပ်</h1>
+    <p class="contract-subtitle">ချစ်ခြင်း · သစ္စာ · အပြန်အလှန်လေးစားမှု</p>
+    <div class="contract-rule"></div>
+    <p class="contract-intro">ကျွန်ုပ်တို့ <strong>Mg Min Khant</strong> နှင့် <strong>Mg Linn Thit Aung</strong> တို့သည် တစ်ဦးကိုတစ်ဦး လေးစားခြင်း၊ ရိုးသားခြင်း၊ နားလည်ပေးခြင်းနှင့် လွတ်လပ်ခွင့်ကို တန်ဖိုးထားခြင်းတို့အပေါ် အခြေခံ၍ ဤကိုယ်ပိုင်ကတိကဝတ်စာချုပ်ကို အမှတ်တရအဖြစ် ပြုလုပ်ကြပါသည်။</p>
+    <div class="contract-clauses">
+      <div><b>အပိုဒ် ၁ — ချစ်ခြင်းနှင့် လေးစားမှု</b><p>တစ်ဦး၏ခံစားချက်၊ ဂုဏ်သိက္ခာ၊ ကိုယ်ပိုင်အမြင်နှင့် နယ်နိမိတ်များကို အပြန်အလှန် လေးစားပါမည်။</p></div>
+      <div><b>အပိုဒ် ၂ — ရိုးသားပွင့်လင်းမှု</b><p>အခက်အခဲများကို ရိုးသားစွာ ပြောဆိုဆွေးနွေးပြီး နားလည်မှုဖြင့် ဖြေရှင်းရန် ကြိုးစားပါမည်။</p></div>
+      <div><b>အပိုဒ် ၃ — အားပေးကူညီမှု</b><p>တစ်ဦးချင်းစီ၏ အိပ်မက်၊ ပညာရေး၊ အနာဂတ်ရည်မှန်းချက်များနှင့် ကိုယ်ပိုင်တိုးတက်မှုကို အားပေးကူညီပါမည်။</p></div>
+      <div><b>အပိုဒ် ၄ — လွတ်လပ်ခွင့်နှင့် တာဝန်ယူမှု</b><p>မည်သည့်ကတိကဝတ်မဆို နှစ်ဦးစလုံး၏ လွတ်လပ်သောသဘောတူညီမှု၊ လုံခြုံမှုနှင့် ဂုဏ်သိက္ခာကို လေးစားရမည်ဖြစ်ကြောင်း နားလည်ပါသည်။</p></div>
+    </div>
+    <p class="contract-declaration">ဤစာချုပ်သည် ကျွန်ုပ်တို့၏ ချစ်ခြင်းနှင့် အပြန်အလှန်ကတိကဝတ်များကို မှတ်တမ်းတင်ထားသည့် ကိုယ်ပိုင်အမှတ်တရစာရွက်စာတမ်းဖြစ်ပါသည်။ ၎င်းသည် အစိုးရထုတ်စာရွက်စာတမ်း သို့မဟုတ် တရားဝင်လက်ထပ်မှတ်ပုံတင်လက်မှတ် မဟုတ်ပါ။</p>
+    <div class="contract-signatures">
+      <div class="contract-signature-block"><div class="contract-signature" id="contract-sign-min">လက်မှတ် မထည့်ရသေးပါ</div><div class="contract-sign-line"></div><strong>Mg Min Khant</strong><small>ပထမစာချုပ်ဝင်</small></div>
+      <div class="contract-signature-block"><div class="contract-signature" id="contract-sign-linn">လက်မှတ် မထည့်ရသေးပါ</div><div class="contract-sign-line"></div><strong>Mg Linn Thit Aung</strong><small>ဒုတိယစာချုပ်ဝင်</small></div>
+    </div>
+    <div class="contract-date-row"><span>စာချုပ်ပြုလုပ်သည့်နေ့ — __________________</span><span>စာချုပ်အမှတ် MC-2026-01</span></div>
+    <div class="contract-footer">ချစ်ခြင်းဖြင့် ရေးထိုးထားသော ကတိတစ်ခု · L ♥ M</div>
+  </article>
+  <p class="small no-print" style="text-align:center;margin-top:14px">PDF ထုတ်ရန် “စာချုပ်ကို PDF ထုတ်ရန်” ကိုနှိပ်ပြီး Print menu တွင် Save as PDF ကိုရွေးပါ။ A4 စာရွက်အရွယ်အစားကို အသုံးပြုပါ။</p>
 </section>
 <section class="section wrap page-view" id="record">
   <div class="section-head"><div class="eyebrow">အပိုဒ် (၄) · စာချုပ်မှတ်တမ်းနှင့် အသိအမှတ်ပြုခြင်း</div><h2>စာချုပ်မှတ်တမ်းနှင့် တံဆိပ်များ</h2><p>ဤဘရောက်ဇာတွင် သိမ်းဆည်းထားသော ကတိသစ္စာများနှင့် လက်မှတ်များ၏ ပုံနှိပ်နိုင်သော မှတ်တမ်းဖြစ်သည်။</p></div>
@@ -367,13 +431,24 @@ function putSignature(elId,src){const el=document.getElementById(elId);if(!el)re
 function render(){
  const d=getData();
  ['min','linn'].forEach(id=>{
-   putSignature('preview-'+id,d[id]);putSignature('record-'+id,d[id]);
+   putSignature('preview-'+id,d[id]);putSignature('record-'+id,d[id]);putSignature('contract-sign-'+id,d[id]);
    const status=document.getElementById('status-'+id);status.textContent=d[id]?'✓ ဤဘရောက်ဇာတွင် လက်မှတ်သိမ်းဆည်းပြီး':'လက်မှတ်ရေးထိုးရန် ကျန်ရှိသည်';status.classList.toggle('done',!!d[id]);
  });
  const both=!!d.min&&!!d.linn;
  document.getElementById('record-status').textContent=both?'နှစ်ဦးစလုံး၏ လက်မှတ်ကို ဤဘရောက်ဇာတွင် သိမ်းဆည်းပြီး':'လက်မှတ်တစ်ဦး သို့မဟုတ် နှစ်ဦးစလုံး၏ လက်မှတ်ကို စောင့်ဆိုင်းနေသည်';
  document.getElementById('record-date').textContent=d.savedAt?new Date(d.savedAt).toLocaleString():'မှတ်တမ်းမတင်ရသေးပါ';
 }
+window.printContract=function(){
+ const data=getData();
+ putSignature('contract-sign-min',data.min);putSignature('contract-sign-linn',data.linn);
+ const missing=[];if(!data.min)missing.push('Mg Min Khant');if(!data.linn)missing.push('Mg Linn Thit Aung');
+ if(missing.length)notify('လက်မှတ်မထည့်ရသေးပါ: '+missing.join(' နှင့် '));
+ document.body.classList.add('print-contract');
+ const done=()=>{document.body.classList.remove('print-contract');window.removeEventListener('afterprint',done)};
+ window.addEventListener('afterprint',done);
+ window.print();
+ setTimeout(()=>document.body.classList.remove('print-contract'),1200);
+};
 window.downloadRecord=function(){
  const d=getData();const record={title:'ချစ်ခြင်းနှင့် ကတိကဝတ်ဆိုင်ရာ ကိုယ်ပိုင်ကြေညာချက်',partners:[{name:names.min,dateOfBirth:'2004-01-06',signatureSaved:!!d.min},{name:names.linn,dateOfBirth:'2007-04-25',signatureSaved:!!d.linn}],recordType:'ကိုယ်ပိုင်အမှတ်တရ; not a legal marriage certificate',savedAt:d.savedAt||null,commitments:['ချစ်ခြင်း','တန်းတူညီမျှမှု','ရိုးသားမှု','လေးစားမှု']};
  const blob=new Blob([JSON.stringify(record,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='ကတိစာချုပ်မှတ်တမ်း.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
